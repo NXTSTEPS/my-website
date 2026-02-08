@@ -270,9 +270,36 @@
         
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
+        }
+
+        /* Responsive grid for different review counts */
+        .grid-3.reviews-4 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3.reviews-5 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* Center last item when there's 5 reviews */
+        .grid-3.reviews-5 .testimonial-card:last-child {
+            grid-column: 1 / -1;
+            max-width: 50%;
+            margin: 0 auto;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .grid-3, .grid-3.reviews-4, .grid-3.reviews-5 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-3.reviews-5 .testimonial-card:last-child {
+                max-width: 100%;
+            }
         }
         
         .card {
@@ -760,7 +787,15 @@
             
             // Update the display
             container.innerHTML = reviewsHTML;
-            
+
+            // Add responsive class based on number of reviews for symmetrical layout
+            container.className = 'grid-3';
+            if (displayReviews.length === 4) {
+                container.classList.add('reviews-4');
+            } else if (displayReviews.length === 5) {
+                container.classList.add('reviews-5');
+            }
+
             console.log(`🎉 Displaying ${displayReviews.length} of ${allReviews.length} total reviews`);
             
         } catch (error) {

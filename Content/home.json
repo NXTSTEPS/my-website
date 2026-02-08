@@ -1,0 +1,17 @@
+{
+  "hero": {
+    "headline": "Reclaim 15+ Hours Every Week",
+    "subheadline": "We build the \"invisible workforce\" that automates your repetitive tasks so you can focus on what actually grows your business.",
+    "primaryButton": "Get Your Free Audit",
+    "secondaryButton": "Learn More"
+  },
+  "stats": {
+    "hoursSaved": "15-20",
+    "moneySaved": "$10K+",
+    "appsConnected": "5,000+"
+  },
+  "limitedOffer": {
+    "showBanner": true,
+    "offerText": "⚡ LIMITED TIME: First 5 Workflow Audits at 50% Off ($249 → $124.50)"
+  }
+}

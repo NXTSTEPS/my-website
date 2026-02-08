@@ -1,0 +1,87 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/home.json"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Main Headline", name: "headline", widget: "string"}
+              - {label: "Subheadline", name: "subheadline", widget: "text"}
+              - {label: "Primary Button Text", name: "primaryButton", widget: "string", default: "Get Your Free Audit"}
+              - {label: "Secondary Button Text", name: "secondaryButton", widget: "string", default: "Learn More"}
+          
+          - label: "Stats Section"
+            name: "stats"
+            widget: "object"
+            fields:
+              - {label: "Hours Saved", name: "hoursSaved", widget: "string", default: "15-20"}
+              - {label: "Money Saved", name: "moneySaved", widget: "string", default: "$10K+"}
+              - {label: "Apps Connected", name: "appsConnected", widget: "string", default: "5,000+"}
+          
+          - label: "Limited Offer"
+            name: "limitedOffer"
+            widget: "object"
+            fields:
+              - {label: "Show Banner", name: "showBanner", widget: "boolean", default: true}
+              - {label: "Offer Text", name: "offerText", widget: "string", default: "⚡ LIMITED TIME: First 5 Workflow Audits at 50% Off ($249 → $124.50)"}
+  
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Client Name", name: "name", widget: "string"}
+      - {label: "Job Title", name: "title", widget: "string"}
+      - {label: "Company/Role", name: "company", widget: "string"}
+      - {label: "Testimonial Quote", name: "quote", widget: "text"}
+      - {label: "Avatar Initials", name: "initials", widget: "string", hint: "2 letters, e.g. SM for Sarah Mitchell"}
+      - {label: "Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first"}
+  
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {label: "Service Name", name: "name", widget: "string"}
+      - {label: "Icon", name: "icon", widget: "string", hint: "Emoji like 🔗"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Tag Line", name: "tagline", widget: "string"}
+  
+  - name: "pricing"
+    label: "Pricing Plans"
+    folder: "content/pricing"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {label: "Plan Name", name: "name", widget: "string"}
+      - {label: "Price", name: "price", widget: "string", hint: "e.g. $249 or $2,500+"}
+      - {label: "Price Note", name: "priceNote", widget: "string", hint: "e.g. One-time assessment"}
+      - {label: "Features", name: "features", widget: "list"}
+      - {label: "Is Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Order", name: "order", widget: "number", default: 1}
+  
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "content/settings.json"
+        fields:
+          - {label: "Site Title", name: "siteTitle", widget: "string", default: "NxtSteps"}
+          - {label: "Contact Email", name: "contactEmail", widget: "string", default: "hello@nxtsteps.cloud"}
+          - {label: "Site Description", name: "siteDescription", widget: "text"}
+          - {label: "Google Analytics ID", name: "analyticsId", widget: "string", hint: "e.g. G-XXXXXXXXXX", required: false}

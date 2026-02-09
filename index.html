@@ -714,6 +714,109 @@
         }
 
         /* ============================================
+           MOBILE HAMBURGER MENU
+           ============================================ */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: var(--color-text);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ============================================
+           CALENDAR POPUP OVERLAY
+           ============================================ */
+        .calendar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-overlay.active {
+            display: flex;
+        }
+
+        .calendar-popup {
+            background: white;
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 600px;
+            height: 80vh;
+            max-height: 700px;
+            position: relative;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calendar-popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .calendar-popup-header h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .calendar-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--color-text-muted);
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .calendar-close:hover {
+            color: var(--color-text);
+        }
+
+        .calendar-popup iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+
+        /* ============================================
            ANIMATIONS
            ============================================ */
         @keyframes scaleIn {
@@ -739,7 +842,33 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+                border-bottom: 1px solid var(--color-border);
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a {
+                padding: 14px 0;
+                border-bottom: 1px solid var(--color-border);
+                font-size: 16px;
+            }
+            .nav-links a:last-child { border-bottom: none; }
+            .cta-nav {
+                text-align: center;
+                margin-top: 8px;
+                padding: 14px 24px !important;
+                border-radius: var(--radius-sm) !important;
+            }
             .hero { padding: 60px 20px 40px; }
             .hero h1 { font-size: 34px; }
             .section { padding: 64px 20px; }
@@ -779,15 +908,31 @@
                 </div>
                 NxtSteps
             </a>
-            <div class="nav-links">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
                 <a href="#services">Services</a>
                 <a href="#tools">Tools</a>
                 <a href="#process">How It Works</a>
                 <a href="#pricing">Pricing</a>
-                <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta-nav" target="_blank">Book Free Audit</a>
+                <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta-nav calendar-link">Book Free Audit</a>
             </div>
         </div>
     </nav>
+
+    <!-- Calendar Popup -->
+    <div class="calendar-overlay" id="calendar-overlay">
+        <div class="calendar-popup">
+            <div class="calendar-popup-header">
+                <h3>Book Your Free Audit</h3>
+                <button class="calendar-close" id="calendar-close">&times;</button>
+            </div>
+            <iframe id="calendar-iframe" src="" loading="lazy"></iframe>
+        </div>
+    </div>
 
     <!-- ============================================
          HERO SECTION (Split Layout)
@@ -798,7 +943,7 @@
                 <h1>Automate the work that slows your business down.</h1>
                 <p>We design and manage custom automations that save teams hours every week -- without hiring or rebuilding systems.</p>
                 <div class="hero-buttons">
-                    <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="btn btn-primary" target="_blank">Book a Free Automation Audit</a>
+                    <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="btn btn-primary calendar-link">Book a Free Automation Audit</a>
                     <a href="#process" class="btn btn-secondary">See How It Works</a>
                 </div>
             </div>
@@ -1075,7 +1220,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 48px;">
-                <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="btn btn-primary" target="_blank">Book Your Free Audit</a>
+                <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="btn btn-primary calendar-link">Book Your Free Audit</a>
             </div>
         </div>
     </section>
@@ -1491,6 +1636,56 @@
          SMOOTH SCROLL & FORM HANDLER
          ============================================ -->
     <script>
+        // Mobile hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // Calendar popup
+        const calendarOverlay = document.getElementById('calendar-overlay');
+        const calendarIframe = document.getElementById('calendar-iframe');
+        const calendarClose = document.getElementById('calendar-close');
+        const calendarUrl = 'https://calendar.app.google/prtM7DG62QurZsVPA';
+
+        document.querySelectorAll('.calendar-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                calendarIframe.src = calendarUrl;
+                calendarOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        if (calendarClose) {
+            calendarClose.addEventListener('click', function() {
+                calendarOverlay.classList.remove('active');
+                calendarIframe.src = '';
+                document.body.style.overflow = '';
+            });
+        }
+
+        if (calendarOverlay) {
+            calendarOverlay.addEventListener('click', function(e) {
+                if (e.target === calendarOverlay) {
+                    calendarOverlay.classList.remove('active');
+                    calendarIframe.src = '';
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

@@ -7,7 +7,7 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://n8n.nxtsteps.cloud https://identity.netlify.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://n8n.nxtsteps.cloud;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://n8n.nxtsteps.cloud https://identity.netlify.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://n8n.nxtsteps.cloud;
 
 # Special headers for admin CMS area (needs more permissions)
 /Admin/*

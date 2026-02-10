@@ -1,0 +1,22 @@
+{
+  "reviews": [
+    {
+      "name": "Sarah M.",
+      "rating": "5",
+      "review": "_We were drowning in manual data entry. NxtSteps built a custom n8n workflow, and now it's completely automated. We're saving 12 hours a week._",
+      "date": "2026-01-25T23:35:26.000Z"
+    },
+    {
+      "name": "Jay P.",
+      "rating": "4",
+      "review": "NxtSteps helps us automate our ability to send targeted mailings to high-quality leads. What would have been a 20-minute process each time now takes us only two minutes.",
+      "date": "2026-01-25T23:38:26.000Z"
+    },
+    {
+      "name": "Yehuda K.",
+      "rating": "5",
+      "review": "It was a pleasure working with Jerry, he was responsive, attentive and took care of all we needed in a timely fashion.",
+      "date": "2026-01-27T18:01:13.000Z"
+    }
+  ]
+}

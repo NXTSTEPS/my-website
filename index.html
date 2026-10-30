@@ -384,6 +384,34 @@
             transform: translateY(-2px);
         }
 
+        .custom-solutions {
+            margin-top: 32px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            color: white;
+            padding: 48px;
+            border-radius: var(--radius-xl);
+        }
+        .custom-solutions .section-label { color: #c7d2fe; }
+        .custom-solutions h3 { color: white; font-size: 28px; margin: 8px 0 16px; }
+        .custom-solutions p { color: rgba(255,255,255,0.9); margin-bottom: 24px; }
+        .custom-solutions ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+        .custom-solutions li {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            color: white;
+        }
+        .custom-solutions li strong { display: block; margin-bottom: 2px; }
+        .custom-solutions .btn { background: white; color: var(--color-primary); }
+        @media (max-width: 768px) {
+            .custom-solutions { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+        }
+
         .card-icon {
             width: 48px;
             height: 48px;
@@ -1022,6 +1050,19 @@
                     <p>Automated data collection, transformation, and reporting so decisions are based on real-time numbers.</p>
                 </div>
             </div>
+            <div class="custom-solutions">
+                <div>
+                    <span class="section-label">New: Custom Solutions</span>
+                    <h3>Built around how your business actually runs.</h3>
+                    <p>Every organization has processes no off-the-shelf software quite handles. We design and build custom applications and automation systems tailored to your exact workflow, so the work runs itself instead of living in someone's inbox or spreadsheet.</p>
+                    <a href="#contact" class="btn">Tell Us What You Need</a>
+                </div>
+                <ul>
+                    <li><strong>Custom Web Apps</strong>Purpose-built tools for your team, members, or customers.</li>
+                    <li><strong>End-to-End Automation</strong>Invoicing, billing, reminders, and follow-ups handled automatically.</li>
+                    <li><strong>Systems That Connect</strong>Your forms, spreadsheets, accounting, and payment tools working as one.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -1435,6 +1476,7 @@
                                 <option value="Free Workflow Audit">Free Workflow Audit ($249 value)</option>
                                 <option value="Build and Launch Project">Build & Launch Project</option>
                                 <option value="Monthly Optimization Retainer">Monthly Optimization Retainer</option>
+                                <option value="Custom Solution">Custom Solution / App Build</option>
                                 <option value="Just have questions">Just have questions</option>
                             </select>
                         </div>

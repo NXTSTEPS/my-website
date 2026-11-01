@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NxtSteps | Custom automation and software for small teams</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='20' cy='50' r='8' fill='%234f46e5'/><circle cx='50' cy='30' r='8' fill='%237c3aed'/><circle cx='80' cy='50' r='10' fill='%23f59e0b'/><line x1='28' y1='45' x2='42' y2='35' stroke='%234f46e5' stroke-width='3'/><line x1='58' y1='35' x2='72' y2='45' stroke='%234f46e5' stroke-width='3'/></svg>">
+<meta name="description" content="NxtSteps builds automations and custom software for small teams using Zapier, n8n, Power Automate, Google Apps Script and custom code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+.section{padding:112px 0}
+.eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--eyebrow)}
+.section-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.section-head h2{margin-top:12px}
+.section-head p{color:var(--muted);font-size:18px;max-width:440px}
+h1,h2,h3{font-family:var(--font-head);color:var(--heading);font-weight:var(--head-weight);letter-spacing:var(--head-track)}
+h2{font-size:clamp(34px,4.4vw,54px);line-height:1.05}
+h3{font-size:20px;line-height:1.25}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:var(--btn-radius);font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid transparent;transition:transform .15s,background .15s,border-color .15s;cursor:pointer;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{border-color:var(--line-strong);color:var(--heading)}
+.btn-ghost:hover{border-color:var(--heading)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:700;font-size:22px;text-decoration:none;color:var(--heading);letter-spacing:-.01em}
+.brand svg{width:40px;height:24px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--muted)}
+.nav-links a:hover{color:var(--heading)}
+.nav-links .btn{color:var(--on-accent);padding:10px 18px;font-size:15px}
+.hamburger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--heading);margin:5px 0;transition:.2s}
+
+/* hero */
+.pill{display:inline-flex;align-items:center;gap:10px;padding:5px 16px 5px 5px;border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;background:var(--pill-bg);color:var(--pill-text);border:1px solid var(--line);margin-bottom:28px}
+.pill b{background:var(--accent);color:var(--on-accent);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.hero h1{font-size:clamp(44px,6.6vw,84px);line-height:.98}
+.hero h1 em{font-style:var(--em-style);color:var(--accent-text)}
+.hero .lead{font-size:20px;color:var(--muted);max-width:540px;margin:28px 0 36px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-note{margin-top:20px;font-size:14px;color:var(--faint)}
+
+/* live feed card */
+.feed{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--card-shadow)}
+.feed-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:13px;color:var(--faint)}
+.feed-top .live{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--heading)}
+.feed-top .live::before{content:"";width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+.feed ul{list-style:none}
+.feed li{display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:start;padding:16px 0;border-top:1px solid var(--line);opacity:0;animation:feed-in .5s ease forwards;animation-delay:var(--d)}
+.feed li:first-child{border-top:0}
+.feed .tick{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:var(--accent);color:var(--on-accent);font-weight:700}
+.feed strong{display:block;color:var(--heading);font-weight:600;font-size:15px}
+.feed li span:not(.tick){font-size:14px;color:var(--muted)}
+.feed time{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
+.feed-foot{margin-top:6px;padding-top:16px;border-top:1px dashed var(--line-strong);font-size:13px;color:var(--faint)}
+@keyframes feed-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.feed li{animation:none;opacity:1}}
+
+/* new band */
+.new-band{background:var(--band-bg);color:var(--band-text);padding:104px 0;position:relative;overflow:hidden}
+.new-band h2{color:var(--band-heading)}
+.new-band h2 em{font-style:var(--em-style);color:var(--accent)}
+.new-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--on-accent);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.new-band .lead{font-size:18px;color:var(--band-muted);margin:22px 0 32px;max-width:520px}
+.num-list{list-style:none;border-top:1px solid var(--band-line)}
+.num-list li{display:grid;grid-template-columns:56px 1fr;padding:24px 0;border-bottom:1px solid var(--band-line)}
+.num-list .idx{font-family:var(--font-head);color:var(--accent);font-weight:700;font-size:15px;padding-top:3px}
+.num-list strong{display:block;font-size:20px;color:var(--band-heading);margin-bottom:4px;font-weight:600}
+.num-list span{color:var(--band-muted)}
+
+/* case study */
+.case{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.case h2{margin:12px 0 20px}
+.case p{color:var(--muted);font-size:18px;margin-bottom:28px}
+.flow{list-style:none;display:grid;gap:12px}
+.flow li{display:flex;gap:16px;align-items:center;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.flow .k{font-family:var(--font-head);font-weight:700;color:var(--accent-text);min-width:28px}
+.flow strong{color:var(--heading);font-weight:600}
+.flow small{display:block;color:var(--muted);font-size:14px}
+.checks{list-style:none;display:grid;gap:10px}
+.checks li{padding-left:28px;position:relative;color:var(--text)}
+.checks li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--accent-text);font-weight:700}
+
+/* services */
+.svc{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);column-gap:64px;border-top:1px solid var(--line)}
+.svc li{display:grid;grid-template-columns:56px 1fr;padding:28px 0;border-bottom:1px solid var(--line)}
+.svc .idx,.steps .idx{font-family:var(--font-head);font-weight:700;color:var(--accent-text);font-size:15px;padding-top:2px}
+.svc p{color:var(--muted);margin-top:6px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;align-items:center}
+.tools .label{font-size:14px;color:var(--faint);margin-right:8px}
+.tools span.t{padding:8px 16px;border:1px solid var(--line-strong);border-radius:999px;font-size:14px;font-weight:500;color:var(--heading)}
+
+/* steps */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--heading)}
+.steps li{padding:28px 28px 0 0}
+.steps h3{margin:14px 0 8px;font-size:24px}
+.steps p{color:var(--muted)}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review{padding:32px;border-radius:18px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
+.review .stars{color:var(--accent);letter-spacing:2px;font-size:18px;margin-bottom:16px}
+.review blockquote{font-size:18px;line-height:1.55;color:var(--heading);flex:1}
+.review figcaption{margin-top:24px;font-weight:600;color:var(--muted);font-size:15px}
+
+/* pricing */
+.offer{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px;border-radius:14px;border:1px dashed var(--accent);margin-bottom:32px;font-weight:500}
+.offer b{background:var(--accent);color:var(--on-accent);padding:3px 10px;border-radius:999px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.plan{padding:36px 32px;border-radius:20px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column}
+.plan .price{font-family:var(--font-head);font-size:46px;font-weight:var(--head-weight);color:var(--heading);margin-top:18px;line-height:1}
+.plan .per{color:var(--faint);font-size:14px;margin:8px 0 24px}
+.plan ul{list-style:none;display:grid;gap:10px;margin-bottom:32px;flex:1}
+.plan li{padding-left:26px;position:relative}
+.plan li::before{content:"\2713";position:absolute;left:0;color:var(--accent-text);font-weight:700}
+.plan:nth-child(2){background:var(--feature-bg);border-color:var(--feature-bg);color:var(--feature-text)}
+.plan:nth-child(2) h3,.plan:nth-child(2) .price{color:var(--feature-heading)}
+.plan:nth-child(2) .per{color:var(--feature-muted)}
+
+/* contact */
+.contact{background:var(--band-bg);color:var(--band-text)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+.contact h2{color:var(--band-heading);margin:12px 0 20px}
+.contact .lead{color:var(--band-muted);font-size:18px;margin-bottom:28px}
+.contact .eyebrow{color:var(--accent)}
+.contact-alt{display:grid;gap:12px;color:var(--band-muted)}
+.contact-alt a{color:var(--band-heading);font-weight:600}
+.form-card{background:#fff;color:#0f172a;border-radius:20px;padding:40px;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:#0f172a}
+.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:16px;font-family:inherit;background:#fff;color:#0f172a}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical}
+.form-card button[type=submit]{width:100%;font-size:17px;padding:17px}
+.form-note{text-align:center;color:#64748b;font-size:14px;margin-top:14px}
+#success-message{display:none;text-align:center;padding:24px 8px}
+#success-message h3{font-size:28px;color:#0f172a;margin:16px 0 10px}
+#success-message p{color:#475569}
+.ok{width:64px;height:64px;border-radius:50%;background:#22c55e;color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto}
+
+/* footer */
+footer{padding:56px 0 40px;border-top:1px solid var(--line);background:var(--bg)}
+.foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+.foot p{color:var(--muted);max-width:340px;margin-top:10px;font-size:15px}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{text-decoration:none;color:var(--muted);font-size:15px}
+.foot-links a:hover{color:var(--heading)}
+.copy{margin-top:40px;font-size:13px;color:var(--faint)}
+
+@media (max-width:900px){
+  .section{padding:80px 0}
+  .section-head,.new-grid,.case,.contact-grid,.hero-grid{grid-template-columns:1fr !important;gap:40px}
+  .svc{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:32px}
+  .reviews,.plans{grid-template-columns:1fr}
+  .new-band{padding:80px 0}
+}
+@media (max-width:768px){
+  .container{padding:0 16px}
+  .hamburger{display:block}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px}
+  .nav-links.active{display:flex}
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav-links .btn{margin-top:12px;border:0}
+  .hero .lead{font-size:18px}
+  .form-row{grid-template-columns:1fr;gap:0}
+  .form-card{padding:28px 20px}
+  .steps{grid-template-columns:1fr}
+  .steps li{padding-right:0}
+}
+
+:root{--font-body:'Inter',system-ui,sans-serif;--font-head:'Space Grotesk','Inter',sans-serif;--head-weight:700;--head-track:-.03em;--em-style:normal;
+--bg:#0b1120;--text:#cbd5e1;--heading:#f8fafc;--muted:#94a3b8;--faint:#64748b;--line:#1e293b;--line-strong:#334155;
+--accent:#f59e0b;--accent-hover:#fbbf24;--accent-text:#f59e0b;--on-accent:#0b1120;--eyebrow:#f59e0b;
+--card:#111a2e;--card-shadow:0 30px 60px rgba(0,0,0,.35);--nav-bg:rgba(11,17,32,.85);--pill-bg:#111a2e;--pill-text:#e2e8f0;--btn-radius:10px;
+--band-bg:#f59e0b;--band-text:#1c1405;--band-heading:#0b1120;--band-muted:#3b2a06;--band-line:rgba(11,17,32,.2);
+--feature-bg:#f59e0b;--feature-text:#1c1405;--feature-heading:#0b1120;--feature-muted:#3b2a06}
+.hero{padding:96px 0 112px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 70%);opacity:.6;pointer-events:none}
+.hero .container{position:relative}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.new-band .badge{background:#0b1120;color:#f59e0b}
+.new-band h2 em{color:#0b1120;text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:8px}
+.new-band .num-list .idx{color:#0b1120}
+.new-band .btn-primary{background:#0b1120;color:#f8fafc}
+.new-band .btn-primary:hover{background:#1e293b}
+.contact{background:#111a2e}
+.contact{--band-heading:#f8fafc;--band-muted:#94a3b8}
+.plan:nth-child(2) .btn-primary{background:#0b1120;color:#f8fafc}
+.plan:nth-child(2) li::before{color:#0b1120}
+.offer{color:#e2e8f0}
+.alt{background:#0e1628}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-row">
+    <a href="/" class="brand"><svg viewBox="0 0 40 24" aria-hidden="true"><line x1="6" y1="14" x2="18" y2="7" stroke="#6366f1" stroke-width="2.5"/><line x1="18" y1="7" x2="31" y2="13" stroke="#6366f1" stroke-width="2.5"/><circle cx="6" cy="14" r="4.5" fill="#6366f1"/><circle cx="18" cy="7" r="4.5" fill="#8b5cf6"/><circle cx="32" cy="13" r="6" fill="#f59e0b"/></svg>NxtSteps</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="nav-links">
+      <a href="#custom">Custom Builds</a>
+      <a href="#services">Services</a>
+      <a href="#process">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="btn btn-primary calendar-link">Book free audit</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container"><div class="hero-grid"><div><a href="#custom" class="pill"><b>New</b> Custom apps &amp; systems, built for you &rarr;</a>
+          <h1>Your business, <em>running itself.</em></h1>
+          <p class="lead">We build automations and custom software that take the repetitive work off your team: billing, follow-ups, data entry, reporting. You get the hours back.</p>
+          <div class="hero-ctas">
+            <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="btn btn-primary calendar-link">Book a free automation audit</a>
+            <a href="#work" class="btn btn-ghost">See a real build</a>
+          </div>
+          <p class="hero-note">30 minutes. No pressure. You leave with a list of what to automate first.</p></div><div class="feed" aria-label="Example: an automated billing run">
+          <div class="feed-top"><span class="live">Running automatically</span><span>Example billing run</span></div>
+          <ul><li style="--d:0.3s"><span class="tick">&#10003;</span><div><strong>Honor logged in Google Sheets</strong><span>Gabbai ticks &ldquo;Create invoice&rdquo;</span></div><time>0:00</time></li><li style="--d:0.6499999999999999s"><span class="tick">&#10003;</span><div><strong>Invoice created in QuickBooks</strong><span>Customer matched, items priced</span></div><time>0:04</time></li><li style="--d:1.0s"><span class="tick">&#10003;</span><div><strong>Card charged on file</strong><span>Within the member's auto-charge limit</span></div><time>0:06</time></li><li style="--d:1.3499999999999999s"><span class="tick">&#10003;</span><div><strong>Payment synced back</strong><span>Row marked Paid, books balanced</span></div><time>0:07</time></li></ul>
+          <div class="feed-foot">Zero clicks after the first tick. This is a system we built and run for a client.</div>
+        </div></div></div>
+</header>
+
+<section id="custom" class="new-band">
+  <div class="container new-grid">
+    <div>
+      <span class="badge">New: Custom Solutions</span>
+      <h2>Software built around <em>how you actually run.</em></h2>
+      <p class="lead">Every organization has processes no off-the-shelf software quite handles. We design and build custom applications and automation systems tailored to your exact workflow, so the work runs itself instead of living in someone's inbox or spreadsheet.</p>
+      <a href="#contact" class="btn btn-primary" data-service="Custom Solution">Tell us what you need &rarr;</a>
+    </div>
+    <ul class="num-list">
+      <li><span class="idx">01</span><div><strong>Custom web apps</strong><span>Purpose-built tools for your team, members, or customers.</span></div></li>
+      <li><span class="idx">02</span><div><strong>End-to-end automation</strong><span>Invoicing, billing, reminders, and follow-ups handled automatically.</span></div></li>
+      <li><span class="idx">03</span><div><strong>Systems that connect</strong><span>Your forms, spreadsheets, accounting, and payment tools working as one.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <div class="container case">
+    <div>
+      <span class="eyebrow">Featured build</span>
+      <h2>A synagogue's billing, start to finish, on autopilot.</h2>
+      <p>Honors, donations and memberships used to mean a spreadsheet, a stack of invoices and a lot of chasing. Now the gabbai fills in one sheet and the system does the rest.</p>
+      <ul class="checks">
+        <li>Invoices created in QuickBooks automatically</li>
+        <li>Cards on file charged, with safety limits built in</li>
+        <li>Monthly and yearly memberships billed on schedule</li>
+        <li>Payments flow back so the sheet always shows who's paid</li>
+      </ul>
+    </div>
+    <ol class="flow">
+      <li><span class="k">01</span><div><strong>Google Sheets</strong><small>Where the gabbai records honors and pledges</small></div></li>
+      <li><span class="k">02</span><div><strong>QuickBooks Online</strong><small>Customer matched, invoice created</small></div></li>
+      <li><span class="k">03</span><div><strong>Card processor</strong><small>Charged within each member's limit</small></div></li>
+      <li><span class="k">04</span><div><strong>Back to the sheet</strong><small>Paid, voided or refunded, kept in sync</small></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="services" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">What we automate</span><h2>Outcomes, not just integrations.</h2></div>
+      <p>If someone on your team is copying data from one place to another, there's a good chance we can make it happen on its own.</p>
+    </div>
+    <ul class="svc"><li><span class="idx">01</span><div><h3>CRM &amp; lead routing</h3><p>New leads scored, routed and followed up automatically. No manual assignment, no missed opportunities.</p></div></li><li><span class="idx">02</span><div><h3>Documents &amp; approvals</h3><p>Proposals, contracts and reports generated from your data, with approval steps built in.</p></div></li><li><span class="idx">03</span><div><h3>Email &amp; notifications</h3><p>Follow-ups, alerts and status updates that go out on time without anyone remembering to send them.</p></div></li><li><span class="idx">04</span><div><h3>Spreadsheets &amp; databases</h3><p>Live data sync, formatting and dashboards, so the sheet updates itself.</p></div></li><li><span class="idx">05</span><div><h3>Connecting your tools</h3><p>Two tools or twenty, talking to each other so your team works from one source of truth.</p></div></li><li><span class="idx">06</span><div><h3>Reporting &amp; data pipelines</h3><p>Numbers collected, cleaned and reported automatically, so decisions use today's data.</p></div></li></ul>
+    <div class="tools"><span class="label">We work with</span><span class="t">Zapier</span><span class="t">n8n</span><span class="t">Power Automate</span><span class="t">Google Apps Script</span><span class="t">Excel VBA</span><span class="t">QuickBooks</span><span class="t">Custom code</span></div>
+  </div>
+</section>
+
+<section id="process" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">How it works</span><h2>From first call to running in weeks, not months.</h2></div>
+      <p>Plain-English documentation at every step. No black boxes, no jargon.</p>
+    </div>
+    <ol class="steps"><li><span class="idx">01</span><h3>Audit</h3><p>We map how work moves today and find where the hours go.</p></li><li><span class="idx">02</span><h3>Design</h3><p>A clear blueprint in plain English, before anything is built.</p></li><li><span class="idx">03</span><h3>Build</h3><p>We build, test and launch, usually live within 1&ndash;2 weeks.</p></li><li><span class="idx">04</span><h3>Support</h3><p>We monitor, fix and extend it as your business changes.</p></li></ol>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Reviews</span><h2>What clients say.</h2></div>
+      <p>Straight from the people we've built for.</p>
+    </div>
+    <div id="reviews-grid" class="reviews"><figure class="review"><div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;We were drowning in manual data entry. NxtSteps built a custom n8n workflow, and now it's completely automated. We're saving 12 hours a week.&rdquo;</blockquote><figcaption>Sarah M.</figcaption></figure><figure class="review"><div class="stars" aria-label="4 out of 5">&#9733;&#9733;&#9733;&#9733;&#9734;</div><blockquote>&ldquo;NxtSteps helps us automate our ability to send targeted mailings to high-quality leads. What would have been a 20-minute process each time now takes us only two minutes.&rdquo;</blockquote><figcaption>Jay P.</figcaption></figure><figure class="review"><div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;It was a pleasure working with Jerry, he was responsive, attentive and took care of all we needed in a timely fashion.&rdquo;</blockquote><figcaption>Yehuda K.</figcaption></figure></div>
+  </div>
+</section>
+
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Pricing</span><h2>Clear prices. Real value.</h2></div>
+      <p>Start with an audit, build what matters most, and keep it running with a monthly retainer.</p>
+    </div>
+    <div class="offer"><b>Limited</b> First 5 workflow audits at 50% off: <s>$249</s> $124.50</div>
+    <div class="plans"><div class="plan"><h3>Workflow Audit</h3><div class="price">$249</div><p class="per">One-time</p><ul><li>30-minute discovery call</li><li>Process analysis</li><li>Automation roadmap</li><li>Tool recommendations</li></ul><a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="btn btn-primary calendar-link">Book your audit</a></div><div class="plan"><h3>Build &amp; Launch</h3><div class="price">$2,500+</div><p class="per">Per project</p><ul><li>Everything in the audit</li><li>Custom automation or app build</li><li>Testing &amp; refinement</li><li>Full documentation</li><li>30 days of support</li></ul><a href="#contact" class="btn btn-primary">Start a project</a></div><div class="plan"><h3>Retainer</h3><div class="price">$499</div><p class="per">Per month</p><ul><li>Monthly workflow review</li><li>Performance tuning</li><li>New automation builds</li><li>Priority support</li></ul><a href="#contact" class="btn btn-primary">Get started</a></div></div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="container contact-grid">
+    <div>
+      <span class="eyebrow">Get in touch</span>
+      <h2>Tell us what's eating your week.</h2>
+      <p class="lead">Send a few lines about the work you'd like off your plate. We'll reply within 24 hours with ideas, not a sales pitch.</p>
+      <div class="contact-alt">
+        <span>Prefer email? <a href="mailto:hello@nxtsteps.cloud">hello@nxtsteps.cloud</a></span>
+        <span>Or <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="calendar-link">book a time directly</a></span>
+      </div>
+    </div>
+    <div class="form-card">
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="field"><label for="name">Your name *</label><input type="text" id="name" name="name" required placeholder="John Doe"></div>
+          <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" required placeholder="you@company.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(555) 123-4567"></div>
+          <div class="field"><label for="company">Company</label><input type="text" id="company" name="company" placeholder="Your company"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="service">I'm interested in *</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service...</option>
+              <option value="Free Workflow Audit">Free Workflow Audit ($249 value)</option>
+              <option value="Build and Launch Project">Build &amp; Launch Project</option>
+              <option value="Monthly Optimization Retainer">Monthly Optimization Retainer</option>
+              <option value="Custom Solution">Custom Solution / App Build</option>
+              <option value="Just have questions">Just have questions</option>
+            </select></div>
+          <div class="field"><label for="budget">Monthly budget *</label>
+            <select id="budget" name="budget" required>
+              <option value="">Select a range...</option>
+              <option value="$0-$500">$0 - $500</option>
+              <option value="$500-$1,500">$500 - $1,500</option>
+              <option value="$1,500-$3,000">$1,500 - $3,000</option>
+              <option value="Above $3,000">Above $3,000</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="message">Tell us about your needs *</label><textarea id="message" name="message" required rows="4" placeholder="What tasks are eating up your time? What do you wish was automated?"></textarea></div>
+        <input type="text" name="website" style="position:absolute;left:-9999px;width:1px;height:1px" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-note">We'll respond within 24 hours.</p>
+      </form>
+      <div id="success-message">
+        <div class="ok">&#10003;</div>
+        <h3>Message received!</h3>
+        <p>Thanks for reaching out. We'll get back to you within 24 hours to set up a free discovery call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div><a href="/" class="brand"><svg viewBox="0 0 40 24" aria-hidden="true"><line x1="6" y1="14" x2="18" y2="7" stroke="#6366f1" stroke-width="2.5"/><line x1="18" y1="7" x2="31" y2="13" stroke="#6366f1" stroke-width="2.5"/><circle cx="6" cy="14" r="4.5" fill="#6366f1"/><circle cx="18" cy="7" r="4.5" fill="#8b5cf6"/><circle cx="32" cy="13" r="6" fill="#f59e0b"/></svg>NxtSteps</a><p>Automations and custom software that give small teams their hours back.</p></div>
+      <div class="foot-links">
+        <a href="#custom">Custom Builds</a><a href="#services">Services</a><a href="#process">How It Works</a><a href="#pricing">Pricing</a><a href="mailto:hello@nxtsteps.cloud">hello@nxtsteps.cloud</a>
+      </div>
+    </div>
+    <p class="copy">&copy; 2026 NxtSteps. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  // Live reviews from reviews-cache.json (kept fresh by the n8n job); static ones stay if it fails.
+  function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+  function stars(r) { var n = Math.min(parseInt(r) || 5, 5); return '\u2605'.repeat(n) + '\u2606'.repeat(5 - n); }
+  fetch('reviews-cache.json').then(function(r) { if (!r.ok) throw 0; return r.json(); }).then(function(data) {
+    var list = (data.reviews || []).slice(0, 6);
+    if (list.length < 3) return;
+    document.getElementById('reviews-grid').innerHTML = list.map(function(rv) {
+      var text = String(rv.review || '').replace(/^_+|_+$/g, '');
+      return '<figure class="review"><div class="stars">' + stars(rv.rating) + '</div>' +
+        '<blockquote>\u201C' + esc(text) + '\u201D</blockquote>' +
+        '<figcaption>' + esc(rv.name || 'Anonymous') + (rv.company ? ', ' + esc(rv.company) : '') + '</figcaption></figure>';
+    }).join('');
+  }).catch(function() {});
+
+  var hamburger = document.getElementById('hamburger'), navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', function() { navLinks.classList.toggle('active'); });
+  navLinks.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { navLinks.classList.remove('active'); }); });
+
+  document.querySelectorAll('.calendar-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var w = 600, h = 700;
+      window.open('https://calendar.app.google/prtM7DG62QurZsVPA', 'BookAudit', 'width=' + w + ',height=' + h + ',top=' + (screen.height - h) / 2 + ',left=' + (screen.width - w) / 2 + ',scrollbars=yes,resizable=yes');
+    });
+  });
+
+  // "Tell us what you need" pre-selects Custom Solution in the form.
+  document.querySelectorAll('[data-service]').forEach(function(a) {
+    a.addEventListener('click', function() { document.getElementById('service').value = a.getAttribute('data-service'); });
+  });
+
+  var form = document.getElementById('contact-form'), success = document.getElementById('success-message');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var honeypot = form.querySelector('input[name="website"]');
+    if (honeypot && honeypot.value !== '') return;
+    var btn = form.querySelector('button[type="submit"]'), original = btn.textContent;
+    btn.textContent = 'Sending...'; btn.disabled = true; btn.style.opacity = '0.7';
+    var data = Object.fromEntries(new FormData(form));
+    delete data.website;
+    try {
+      var res = await fetch('https://n8n.nxtsteps.cloud/webhook/lead-submission', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error('Form submission failed');
+      form.style.display = 'none'; success.style.display = 'block';
+    } catch (err) {
+      btn.textContent = original; btn.disabled = false; btn.style.opacity = '1';
+      alert('Error submitting form. Please try again or email us directly at hello@nxtsteps.cloud');
+    }
+  });
+})();
+</script>
+</body>
+</html>

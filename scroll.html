@@ -12,15 +12,19 @@
 <link rel="stylesheet" href="assets/scrollcraft/scrollcraft.css">
 <style>
   :root {
-    --sc-canvas:     #0b1120;
-    --sc-surface:    #121b2f;
+    --sc-canvas:     #0e0d22;
+    --sc-surface:    #17163a;
     --sc-ink:        #f1f5f9;
-    --sc-ink-soft:   #94a3b8;
+    --sc-ink-soft:   #a5a7c9;
     --sc-accent:     #f59e0b;
-    --sc-accent-ink: #0b1120;
+    --sc-accent-ink: #0e0d22;
     --sc-font-display: "Space Grotesk", system-ui, sans-serif;
     --sc-font-text:    "Inter", system-ui, sans-serif;
-    --line: #1f2a44;
+    --line: #2a2858;
+    --indigo: #4f46e5;
+    --indigo-hi: #6366f1;
+    --indigo-soft: #a5b4fc;
+    --violet: #7c3aed;
   }
   body { background: var(--sc-canvas); color: var(--sc-ink); font-family: var(--sc-font-text); }
   a { color: inherit; }
@@ -36,9 +40,9 @@
   .bar nav { display: flex; align-items: center; gap: 28px; font-size: 15px; }
   .bar nav a { text-decoration: none; color: var(--sc-ink-soft); }
   .bar nav a:hover { color: var(--sc-ink); }
-  .cta { display: inline-flex; align-items: center; gap: 8px; background: var(--sc-accent); color: var(--sc-accent-ink) !important;
+  .cta { display: inline-flex; align-items: center; gap: 8px; background: var(--indigo); color: #fff !important;
          font-weight: 600; text-decoration: none; padding: 12px 20px; border-radius: 10px; border: 0; cursor: pointer; font: inherit; font-weight: 600; }
-  .cta:hover { background: #fbbf24; }
+  .cta:hover { background: var(--indigo-hi); }
   .cta--lg { padding: 16px 26px; font-size: 17px; }
   .ghost { display: inline-flex; padding: 16px 24px; border-radius: 10px; border: 1px solid var(--sc-hairline-strong); text-decoration: none; font-weight: 500; }
   .ghost:hover { border-color: var(--sc-ink); }
@@ -50,7 +54,7 @@
   .plane--grid { inset: -20% 0 -20%; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
                  background-size: 64px 64px; mask-image: radial-gradient(ellipse 70% 60% at 70% 45%, #000, transparent 75%);
                  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 45%, #000, transparent 75%); opacity: .7; }
-  .plane--glow { background: radial-gradient(40vw 40vw at 78% 38%, rgba(245,158,11,.16), transparent 70%); }
+  .plane--glow { background: radial-gradient(40vw 40vw at 78% 38%, rgba(99,102,241,.28), transparent 70%); }
   .hero .sc-wrap { position: relative; z-index: 3; }
   .hero h1 { max-width: 11ch; }
   .hero .sc-lede { margin: 28px 0 36px; color: #cbd5e1; }
@@ -82,7 +86,7 @@
   @media (max-width: 860px) { .float--hide-m, .float--front { display: none; } .float--back { opacity: .28; } .doc { width: 150px; font-size: 11px; } .doc--sticky { width: 120px; } }
 
   /* ---------- 2 peak: the desk clears itself ---------- */
-  .desk { background: radial-gradient(70% 60% at 65% 50%, #111a2e, var(--sc-canvas)); }
+  .desk { background: radial-gradient(70% 60% at 65% 50%, #1b1948, var(--sc-canvas)); }
   .desk__cards { position: absolute; inset: 0; z-index: 1; }
   .desk__cards .doc { position: absolute; left: 0; top: 0; will-change: transform; transition: none; animation: none; }
   .desk .sc-copy { left: var(--sc-gutter); top: 50%; bottom: auto; transform: translateY(-50%); max-width: min(30rem, 86vw); z-index: 3; }
@@ -96,21 +100,21 @@
   }
 
   /* ---------- 3 new: custom solutions ---------- */
-  .new { background: var(--sc-accent); color: var(--sc-accent-ink); }
-  .new .sc-display { color: var(--sc-accent-ink); }
+  .new { background: var(--indigo); color: #fff; }
+  .new .sc-display { color: #fff; }
   .new__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; }
-  .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--sc-accent-ink); color: var(--sc-accent); font-weight: 700; font-size: 12px;
+  .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--sc-accent); color: var(--sc-accent-ink); font-weight: 700; font-size: 12px;
            letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; }
   .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse 1.6s ease-in-out infinite; }
   @keyframes pulse { 50% { opacity: .25; } }
-  .new p { color: #3b2a06; font-size: 18px; max-width: 34rem; }
-  .new u { text-decoration-thickness: 5px; text-underline-offset: 8px; }
-  .new .cta { background: var(--sc-accent-ink); color: var(--sc-ink) !important; }
-  .new .cta:hover { background: #1e293b; }
-  .offer-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(11,17,32,.22); }
-  .offer-list li { padding: 22px 0; border-bottom: 1px solid rgba(11,17,32,.22); }
+  .new p { color: #e0e7ff; font-size: 18px; max-width: 34rem; }
+  .new u { text-decoration-color: var(--sc-accent); text-decoration-thickness: 5px; text-underline-offset: 8px; }
+  .new .cta { background: #fff; color: var(--indigo) !important; }
+  .new .cta:hover { background: #eef2ff; }
+  .offer-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.25); }
+  .offer-list li { padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.25); }
   .offer-list strong { display: block; font-family: var(--sc-font-display); font-size: 24px; margin-bottom: 4px; }
-  .offer-list span { color: #3b2a06; }
+  .offer-list span { color: #e0e7ff; }
   @media (max-width: 860px) { .new__grid { grid-template-columns: 1fr; gap: 40px; } }
 
   /* ---------- 4 signature: your week ---------- */
@@ -121,11 +125,11 @@
   .day h3 { font: 600 13px var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); margin: 0 0 4px; }
   .day__col { flex: 1; display: flex; flex-direction: column; gap: 8px; border-radius: 12px; padding: 8px; background: var(--sc-surface); position: relative; overflow: hidden; }
   .day__free { flex: 0 1 0; min-height: 0; overflow: hidden; display: grid; place-items: center; border-radius: 8px; border: 1.5px dashed color-mix(in oklab, var(--sc-accent) 60%, transparent);
-                background: color-mix(in oklab, var(--sc-accent) 8%, transparent); font-family: var(--sc-font-display); font-weight: 700; color: var(--sc-accent); font-size: 15px; opacity: var(--free, 0); }
-  .task { flex: var(--h, 1) 1 0; min-height: 0; border-radius: 8px; background: #1f2a44; color: #cbd5e1; font-size: 13px; padding: 10px; overflow: hidden;
+                background: color-mix(in oklab, var(--indigo) 16%, transparent); font-family: var(--sc-font-display); font-weight: 700; color: var(--sc-accent); font-size: 15px; opacity: var(--free, 0); }
+  .task { flex: var(--h, 1) 1 0; min-height: 0; border-radius: 8px; background: #25234d; color: #d4d6f0; font-size: 13px; padding: 10px; overflow: hidden;
           transform-origin: top; position: relative; }
   .task::after { content: ""; position: absolute; left: 10px; right: 10px; top: 50%; height: 2px; background: var(--sc-accent); transform: scaleX(var(--strike, 0)); transform-origin: left; }
-  .task.is-gone { background: color-mix(in oklab, var(--sc-accent) 18%, #1f2a44); }
+  .task.is-gone { background: color-mix(in oklab, var(--sc-accent) 18%, #25234d); }
   .week__foot { font-family: var(--sc-font-display); font-size: var(--sc-t-xl); font-weight: 600; }
   @media (max-width: 860px) { .week__grid { gap: 6px; } .task { font-size: 10px; padding: 6px; } .day h3 { font-size: 11px; } .day__col { padding: 5px; gap: 5px; } .day__free { font-size: 11px; } }
 
@@ -135,9 +139,11 @@
   .checks li { padding-left: 28px; position: relative; color: #cbd5e1; }
   .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--sc-accent); font-weight: 700; }
   .flow { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 14px; }
-  .flow::before { content: ""; position: absolute; left: 27px; top: 28px; bottom: 28px; width: 2px; background: var(--line); }
+  .flow::before { content: ""; position: absolute; left: 27px; top: 28px; bottom: 28px; width: 2px; background: var(--indigo); }
+  .flow li:nth-child(2) .dot { background: var(--violet); box-shadow: 0 0 0 6px color-mix(in oklab, var(--violet) 22%, transparent); }
+  .flow li:last-child .dot { width: 24px; height: 24px; margin-left: -2px; background: var(--sc-accent); box-shadow: 0 0 0 6px color-mix(in oklab, var(--sc-accent) 20%, transparent); }
   .flow li { position: relative; display: flex; gap: 18px; align-items: center; padding: 16px 18px; border-radius: 14px; background: var(--sc-surface); border: 1px solid var(--line); }
-  .flow .dot { width: 20px; height: 20px; border-radius: 50%; flex: none; background: var(--sc-accent); box-shadow: 0 0 0 6px color-mix(in oklab, var(--sc-accent) 18%, transparent); position: relative; z-index: 1; }
+  .flow .dot { width: 20px; height: 20px; border-radius: 50%; flex: none; background: var(--indigo-hi); box-shadow: 0 0 0 6px color-mix(in oklab, var(--indigo-hi) 22%, transparent); position: relative; z-index: 1; }
   .flow strong { display: block; font-weight: 600; }
   .flow small { color: var(--sc-ink-soft); font-size: 14px; }
   @media (max-width: 860px) { .case { grid-template-columns: 1fr; gap: 40px; } }
@@ -146,7 +152,7 @@
   .rail { display: flex; gap: 20px; align-items: center; height: 100%; padding: 120px var(--sc-gutter) 80px; box-sizing: border-box; }
   .rail__lead { flex: 0 0 min(30rem, 80vw); display: flex; flex-direction: column; justify-content: center; }
   .svc { flex: 0 0 min(23rem, 78vw); height: clamp(300px, 54vh, 440px); box-sizing: border-box; background: var(--sc-surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
-  .svc svg { position: absolute; top: 28px; left: 32px; width: 44px; height: 44px; color: var(--sc-accent); }
+  .svc svg { position: absolute; top: 28px; left: 32px; width: 44px; height: 44px; color: var(--indigo-soft); }
   .svc h3 { font-family: var(--sc-font-display); font-size: 26px; line-height: 1.1; margin: 0 0 10px; }
   .svc p { color: var(--sc-ink-soft); margin: 0; }
   .svc--tools { background: transparent; border-style: dashed; justify-content: center; }
@@ -170,9 +176,9 @@
   .plan li { padding-left: 26px; position: relative; }
   .plan li::before { content: "\2713"; position: absolute; left: 0; color: var(--sc-accent); font-weight: 700; }
   .plan .cta { justify-content: center; }
-  .plan--hot { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
-  .plan--hot .per { color: #3b2a06; } .plan--hot li::before { color: var(--sc-accent-ink); }
-  .plan--hot .cta { background: var(--sc-accent-ink); color: var(--sc-ink) !important; }
+  .plan--hot { background: var(--indigo); color: #fff; border-color: var(--indigo-hi); }
+  .plan--hot .per { color: #c7d2fe; } .plan--hot li::before { color: var(--sc-accent); }
+  .plan--hot .cta { background: #fff; color: var(--indigo) !important; }
   @media (max-width: 860px) { .reviews, .plans { grid-template-columns: 1fr; } }
 
   /* ---------- 8 close ---------- */
@@ -186,7 +192,7 @@
   .field { margin-bottom: 16px; }
   .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
   .field input, .field select, .field textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font: inherit; font-size: 16px; background: #fff; color: #0f172a; }
-  .field :focus { outline: none; border-color: var(--sc-accent); }
+  .field :focus { outline: none; border-color: var(--indigo); }
   .form .cta { width: 100%; justify-content: center; padding: 16px; font-size: 17px; }
   .note { text-align: center; color: #64748b; font-size: 14px; margin: 12px 0 0; }
   #success-message { display: none; text-align: center; padding: 24px 8px; }
@@ -213,7 +219,7 @@
 <main id="top">
 
   <!-- 1 · Recognition. Calm, layered: grid, glow, back papers, copy, front papers. -->
-  <section class="hero" data-sc-act="flow" data-sc-drift="#0b1120">
+  <section class="hero" data-sc-act="flow" data-sc-drift="#0e0d22">
     <div class="plane plane--grid" data-sc-parallax="-0.12" aria-hidden="true"></div>
     <div class="plane plane--glow" data-sc-parallax="-0.05" aria-hidden="true"></div>
     <div class="plane" aria-hidden="true" data-sc-parallax="-0.18">
@@ -238,7 +244,7 @@
   </section>
 
   <!-- 2 · Tension → turn. THE PEAK: the scattered desk sorts itself under the reader's scroll. -->
-  <section class="desk" data-sc-act="pin" data-sc-span="2.8" data-sc-drift="#0d1426" id="desk">
+  <section class="desk" data-sc-act="pin" data-sc-span="2.8" data-sc-drift="#121034" id="desk">
     <div data-sc-stage>
       <div class="desk__cards" aria-hidden="true">
         <div class="doc"><span class="tag">Overdue</span><b>Invoice #1042</b><i></i><i></i><i></i><span class="ok">&#10003;</span></div>
@@ -267,7 +273,7 @@
   </section>
 
   <!-- 3 · New offering. A wipe is a change of state. -->
-  <section id="custom" class="new sc-section" data-sc-act="flow" data-sc-drift="#0b1120">
+  <section id="custom" class="new sc-section" data-sc-act="flow" data-sc-drift="#0e0d22">
     <div class="sc-wrap new__grid">
       <div class="sc-stack" data-sc-in data-sc-stagger="80">
         <span class="badge">New: Custom Solutions</span>
@@ -284,7 +290,7 @@
   </section>
 
   <!-- 4 · Signature move: your week empties as you scroll. -->
-  <section data-sc-act="pin" data-sc-span="1.9" data-sc-drift="#0b1120" id="week">
+  <section data-sc-act="pin" data-sc-span="1.9" data-sc-drift="#0e0d22" id="week">
     <div data-sc-stage class="week">
       <div class="week__head">
         <h2 class="sc-display sc-display--md" style="max-width:16ch">This is a normal week.</h2>
@@ -302,7 +308,7 @@
   </section>
 
   <!-- 5 · Substance: a real build. -->
-  <section id="work" class="sc-section" data-sc-act="flow" data-sc-drift="#0d1426">
+  <section id="work" class="sc-section" data-sc-act="flow" data-sc-drift="#121034">
     <div class="sc-wrap case">
       <div class="sc-stack" data-sc-in data-sc-stagger="70">
         <h2 class="sc-display sc-display--lg">A synagogue's billing, start to finish, on autopilot.</h2>
@@ -324,7 +330,7 @@
   </section>
 
   <!-- 6 · Range: services travel sideways. -->
-  <section id="services" data-sc-act="pan" data-sc-span="3" data-sc-drift="#0b1120">
+  <section id="services" data-sc-act="pan" data-sc-span="3" data-sc-drift="#0e0d22">
     <div data-sc-stage>
       <div class="rail" data-sc-pan="0.08">
         <div class="rail__lead sc-stack">
@@ -343,7 +349,7 @@
   </section>
 
   <!-- 7 · Proof, then the price. Reads like a document on purpose. -->
-  <section id="pricing" class="sc-section" data-sc-act="flow" data-sc-drift="#0d1426">
+  <section id="pricing" class="sc-section" data-sc-act="flow" data-sc-drift="#121034">
     <div class="sc-wrap">
       <h2 class="sc-display sc-display--md" data-sc-in>What clients say.</h2>
       <div id="reviews-grid" class="reviews" data-sc-in data-sc-stagger="90">
@@ -361,7 +367,7 @@
   </section>
 
   <!-- 8 · Commitment. Resolves and holds; the footer lives inside it. -->
-  <section id="contact" class="close sc-section" data-sc-act="flow" data-sc-drift="#121b2f" data-sc-spotlight>
+  <section id="contact" class="close sc-section" data-sc-act="flow" data-sc-drift="#17163a" data-sc-spotlight>
     <div class="sc-wrap">
       <div class="close__grid">
         <div data-sc-in>

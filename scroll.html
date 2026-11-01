@@ -151,15 +151,55 @@
   .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
   .checks li { padding-left: 28px; position: relative; color: #cbd5e1; }
   .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--sc-accent); font-weight: 700; }
-  .flow { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 14px; }
-  .flow::before { content: ""; position: absolute; left: 27px; top: 28px; bottom: 28px; width: 2px; background: var(--indigo); }
-  .flow li:nth-child(2) .dot { background: var(--violet); box-shadow: 0 0 0 6px color-mix(in oklab, var(--violet) 22%, transparent); }
-  .flow li:last-child .dot { width: 24px; height: 24px; margin-left: -2px; background: var(--sc-accent); box-shadow: 0 0 0 6px color-mix(in oklab, var(--sc-accent) 20%, transparent); }
-  .flow li { position: relative; display: flex; gap: 18px; align-items: center; padding: 16px 18px; border-radius: 14px; background: var(--sc-surface); border: 1px solid var(--line); }
-  .flow .dot { width: 20px; height: 20px; border-radius: 50%; flex: none; background: var(--indigo-hi); box-shadow: 0 0 0 6px color-mix(in oklab, var(--indigo-hi) 22%, transparent); position: relative; z-index: 1; }
-  .flow strong { display: block; font-weight: 600; }
-  .flow small { color: var(--sc-ink-soft); font-size: 14px; }
   @media (max-width: 860px) { .case { grid-template-columns: 1fr; gap: 40px; } }
+
+  .stat { display: flex; align-items: baseline; gap: 16px; padding: 18px 0; border-block: 1px solid var(--line); }
+  .stat b { font-family: var(--sc-font-display); font-size: clamp(2.6rem, 2rem + 2.4vw, 3.8rem); line-height: 1; color: var(--sc-accent); white-space: nowrap; letter-spacing: -.03em; }
+  .stat span { color: #cbd5e1; max-width: 22rem; }
+
+  /* sample billing: rows get ticked, invoiced, paid; the invoice slides in and is stamped */
+  .bill { position: relative; margin: 0; padding-bottom: 172px; }
+  .sh { background: #fff; color: #0f172a; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); font-size: 14px; }
+  .sh__top { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; font-weight: 600; font-size: 13px; }
+  .sh__top em { margin-left: auto; font-style: normal; font-size: 11px; font-weight: 600; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 999px; }
+  .sh__dots { display: flex; gap: 5px; } .sh__dots i { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; }
+  .sh__row { display: grid; grid-template-columns: 1.4fr 1fr .8fr .7fr 1fr; align-items: center; gap: 8px; padding: 11px 16px; border-bottom: 1px solid #eef2f7; }
+  .sh__row:last-child { border-bottom: 0; }
+  .sh__head { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #64748b; background: #f8fafc; }
+  .box { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #cbd5e1; position: relative; }
+  .box::after { content: "\2713"; position: absolute; inset: -3px 0 0 1px; font-size: 13px; font-weight: 800; color: #fff; opacity: 0; }
+  .st { position: relative; height: 22px; }
+  .st i { position: absolute; left: 0; top: 0; font-style: normal; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; opacity: 0; white-space: nowrap; }
+  .st .s0 { background: #f1f5f9; color: #64748b; opacity: 1; } .st .s1 { background: #e0e7ff; color: #3730a3; } .st .s2 { background: #dcfce7; color: #166534; }
+  .bill.sc-in .box { animation: tick .25s ease-out forwards; animation-delay: calc(.5s + var(--i) * .35s); }
+  .bill.sc-in .box::after { animation: show .2s forwards; animation-delay: calc(.5s + var(--i) * .35s); }
+  .bill.sc-in .st .s0 { animation: hide .2s forwards; animation-delay: calc(.9s + var(--i) * .35s); }
+  .bill.sc-in .st .s1 { animation: show .2s forwards, hide .2s forwards; animation-delay: calc(.9s + var(--i) * .35s), calc(3s + var(--i) * .3s); }
+  .bill.sc-in .st .s2 { animation: show .25s forwards; animation-delay: calc(3s + var(--i) * .3s); }
+  @keyframes tick { to { background: var(--indigo); border-color: var(--indigo); } }
+  @keyframes show { to { opacity: 1; } }
+  @keyframes hide { to { opacity: 0; } }
+  .inv { position: absolute; right: -12px; bottom: 0; width: min(300px, 78%); background: #fff; color: #0f172a; border-radius: 14px; padding: 18px 20px;
+         box-shadow: 0 30px 60px -16px rgba(0,0,0,.7), 0 0 0 1px rgba(99,102,241,.35); opacity: 0; transform: translateY(24px); }
+  .bill.sc-in .inv { animation: inv .6s cubic-bezier(.2,.8,.2,1) 1.9s forwards; }
+  @keyframes inv { to { opacity: 1; transform: none; } }
+  .inv__top { display: flex; justify-content: space-between; font-size: 14px; } .inv__top span { color: #64748b; font-size: 13px; }
+  .inv__to { margin: 6px 0 12px; font-size: 13px; color: #64748b; } .inv__to strong { color: #0f172a; }
+  .inv__line { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; padding: 8px 0; border-top: 1px solid #eef2f7; }
+  .inv__total { font-weight: 700; }
+  .inv__stamp { position: absolute; right: 18px; top: 44px; font: 800 15px var(--sc-font-display); letter-spacing: .12em; text-transform: uppercase; color: #16a34a;
+                border: 2.5px solid #16a34a; border-radius: 6px; padding: 2px 10px; opacity: 0; transform: rotate(-10deg) scale(1.6); }
+  .bill.sc-in .inv__stamp { animation: stampin .35s cubic-bezier(.3,1.6,.5,1) 3.4s forwards; }
+  @keyframes stampin { to { opacity: 1; transform: rotate(-10deg) scale(1); } }
+  .bill figcaption { position: absolute; left: 0; bottom: 0; font-size: 12px; color: var(--sc-ink-soft); max-width: 40%; }
+  @media (prefers-reduced-motion: reduce) {
+    .bill .box { background: var(--indigo); border-color: var(--indigo); } .bill .box::after, .bill .st .s2, .bill .inv, .bill .inv__stamp { opacity: 1; transform: none; animation: none !important; }
+    .bill .st .s0, .bill .st .s1 { opacity: 0; animation: none !important; } .bill .inv__stamp { transform: rotate(-10deg); }
+  }
+  @media (max-width: 860px) {
+    .sh { font-size: 12px; } .sh__row { padding: 9px 10px; gap: 4px; grid-template-columns: 1.3fr 1fr .8fr .7fr 1.1fr; } .sh__head { font-size: 9px; }
+    .st i { font-size: 10px; padding: 3px 6px; } .inv { right: 0; bottom: 30px; } .bill { padding-bottom: 214px; } .sh__top { font-size: 12px; } .sh__top em { white-space: nowrap; } .bill figcaption { max-width: 100%; }
+  }
 
   /* ---------- 6 services: pan ---------- */
   .rail { display: flex; gap: 20px; align-items: center; height: 100%; padding: 120px var(--sc-gutter) 80px; box-sizing: border-box; }
@@ -376,6 +416,7 @@
       <div class="sc-stack" data-sc-in data-sc-stagger="70">
         <h2 class="sc-display sc-display--lg">A synagogue's billing, start to finish, on autopilot.</h2>
         <p class="sc-body">Honors, donations and memberships used to mean a spreadsheet, a stack of invoices and a lot of chasing. Now the gabbai fills in one sheet and the system does the rest.</p>
+        <p class="stat"><b>1 hour</b><span>saved every week for a volunteer gabbai. Time back for the shul, not the spreadsheet.</span></p>
         <ul class="checks">
           <li>Invoices created in QuickBooks automatically</li>
           <li>Cards on file charged, with safety limits built in</li>
@@ -383,12 +424,24 @@
           <li>Payments flow back so the sheet always shows who's paid</li>
         </ul>
       </div>
-      <ol class="flow" data-sc-in data-sc-stagger="140">
-        <li><span class="dot"></span><div><strong>Google Sheets</strong><small>Where the gabbai records honors and pledges</small></div></li>
-        <li><span class="dot"></span><div><strong>QuickBooks Online</strong><small>Customer matched, invoice created</small></div></li>
-        <li><span class="dot"></span><div><strong>Card processor</strong><small>Charged within each member's limit</small></div></li>
-        <li><span class="dot"></span><div><strong>Back to the sheet</strong><small>Paid, voided or refunded, kept in sync</small></div></li>
-      </ol>
+      <figure class="bill" data-sc-in aria-label="Sample: the gabbai ticks rows in a sheet, invoices are created and marked paid automatically">
+        <div class="sh">
+          <div class="sh__top"><span class="sh__dots"><i></i><i></i><i></i></span>Honors log &middot; Shabbos Noach<em>Sample data</em></div>
+          <div class="sh__row sh__head"><span>Member</span><span>Honor</span><span>Amount</span><span>Invoice</span><span>Status</span></div>
+            <div class="sh__row" style="--i:0"><span>Cohen, D.</span><span>Kohen</span><span>$36</span><span class="box"></span><span class="st"><i class="s0">Ready</i><i class="s1">Invoiced</i><i class="s2">Paid</i></span></div>
+            <div class="sh__row" style="--i:1"><span>Levy, A.</span><span>Levi</span><span>$26</span><span class="box"></span><span class="st"><i class="s0">Ready</i><i class="s1">Invoiced</i><i class="s2">Paid</i></span></div>
+            <div class="sh__row" style="--i:2"><span>Katz, M.</span><span>Shlishi</span><span>$18</span><span class="box"></span><span class="st"><i class="s0">Ready</i><i class="s1">Invoiced</i><i class="s2">Paid</i></span></div>
+            <div class="sh__row" style="--i:3"><span>Stern, Y.</span><span>Maftir</span><span>$50</span><span class="box"></span><span class="st"><i class="s0">Ready</i><i class="s1">Invoiced</i><i class="s2">Paid</i></span></div>
+        </div>
+        <div class="inv">
+          <div class="inv__top"><b>Invoice #1047</b><span>Nov 1</span></div>
+          <p class="inv__to">Bill to <strong>Cohen, D.</strong></p>
+          <div class="inv__line"><span>Mi Shebairach, Shabbos Noach</span><span>$36.00</span></div>
+          <div class="inv__line inv__total"><span>Total</span><span>$36.00</span></div>
+          <span class="inv__stamp">Paid</span>
+        </div>
+        <figcaption>Sample data. Names and amounts are illustrative.</figcaption>
+      </figure>
     </div>
   </section>
 

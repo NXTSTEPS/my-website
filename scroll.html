@@ -210,7 +210,12 @@
   .tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .tools span { padding: 7px 14px; border: 1px solid var(--sc-hairline-strong); border-radius: 999px; font-size: 14px; }
 
-  /* ---------- 7 proof + pricing ---------- */
+  /* ---------- 7 who, proof + pricing ---------- */
+  .who { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; max-width: 60rem; }
+  .who img { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; background: #fff;
+             box-shadow: 0 0 0 4px var(--sc-canvas), 0 0 0 6px var(--indigo-hi), 0 0 0 10px var(--sc-canvas), 0 0 0 12px color-mix(in oklab, var(--sc-accent) 70%, transparent); }
+  .who .sc-lede { color: #cbd5e1; margin: 16px 0 24px; }
+  @media (max-width: 860px) { .who { grid-template-columns: 1fr; gap: 28px; } .who img { width: 132px; height: 132px; } }
   .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
   .review { margin: 0; padding: 30px; border-radius: 18px; background: var(--sc-surface); border: 1px solid var(--line); display: flex; flex-direction: column; }
   .review .stars { color: var(--sc-accent); letter-spacing: 2px; margin-bottom: 14px; }
@@ -409,7 +414,15 @@
   <!-- 7 · Proof, then the price. Reads like a document on purpose. -->
   <section id="pricing" class="sc-section" data-sc-act="flow" data-sc-drift="#121034">
     <div class="sc-wrap">
-      <h2 class="sc-display sc-display--md" data-sc-in>What clients say.</h2>
+      <div class="who" data-sc-in data-sc-stagger="80">
+        <img src="assets/jerry.jpg" width="256" height="256" alt="Jerry, NxtSteps">
+        <div class="who__text">
+          <h2 class="sc-display sc-display--md">Hi, I'm Jerry.</h2>
+          <p class="sc-lede">You work with me directly, from the free call to launch and after. No hand-offs, no account managers, no jargon. Just someone who learns how your business runs and makes the busywork disappear.</p>
+          <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta calendar-link">Book a free call</a>
+        </div>
+      </div>
+      <h2 class="sc-display sc-display--md" data-sc-in style="margin-top:112px">What clients say.</h2>
       <div id="reviews-grid" class="reviews" data-sc-in data-sc-stagger="90">
         <figure class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;We were drowning in manual data entry. NxtSteps built a custom n8n workflow, and now it's completely automated. We're saving 12 hours a week.&rdquo;</blockquote><figcaption>Sarah M.</figcaption></figure>
         <figure class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><blockquote>&ldquo;NxtSteps helps us automate our ability to send targeted mailings to high-quality leads. What would have been a 20-minute process each time now takes us only two minutes.&rdquo;</blockquote><figcaption>Jay P.</figcaption></figure>

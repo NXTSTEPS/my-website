@@ -48,6 +48,19 @@
   .ghost:hover { border-color: var(--sc-ink); }
   @media (max-width: 860px) { .bar nav a:not(.cta) { display: none; } .bar .cta { padding: 10px 14px; font-size: 14px; } }
 
+  /* ---------- the logo thread: indigo, violet, amber dots joined by a line that fills as you read ---------- */
+  .thread { position: fixed; left: 22px; top: 96px; bottom: 32px; width: 14px; z-index: 40; pointer-events: none; }
+  .thread__line { position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
+  .thread__fill { position: absolute; inset: 0; background: linear-gradient(var(--indigo), var(--violet) 55%, var(--sc-accent)); transform-origin: top; transform: scaleY(var(--read, 0)); }
+  .thread__dot { position: absolute; left: 0; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: var(--sc-canvas); border: 2px solid var(--line); transition: background .3s, border-color .3s, transform .3s; }
+  .thread__dot[data-c="amber"] { width: 18px; height: 18px; left: -2px; margin-top: -9px; }
+  .thread__dot.is-on[data-c="indigo"] { background: var(--indigo-hi); border-color: var(--indigo-hi); }
+  .thread__dot.is-on[data-c="violet"] { background: var(--violet); border-color: var(--violet); }
+  .thread__dot.is-on[data-c="amber"]  { background: var(--sc-accent); border-color: var(--sc-accent); transform: scale(1.15); }
+  .thread__dot em { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); white-space: nowrap; font: 600 11px var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase; font-style: normal; color: var(--sc-ink-soft); background: var(--sc-canvas); padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line); opacity: 0; transition: opacity .3s; }
+  .thread__dot.is-here em { opacity: 1; }
+  @media (max-width: 1240px) { .thread { display: none; } }
+
   /* ---------- 1 hero: layered planes ---------- */
   .hero { position: relative; min-height: 100svh; overflow: clip; display: grid; align-items: center; padding: 120px 0 80px; }
   .plane { position: absolute; inset: 0; pointer-events: none; }
@@ -152,7 +165,45 @@
   .rail { display: flex; gap: 20px; align-items: center; height: 100%; padding: 120px var(--sc-gutter) 80px; box-sizing: border-box; }
   .rail__lead { flex: 0 0 min(30rem, 80vw); display: flex; flex-direction: column; justify-content: center; }
   .svc { flex: 0 0 min(23rem, 78vw); height: clamp(300px, 54vh, 440px); box-sizing: border-box; background: var(--sc-surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
-  .svc svg { position: absolute; top: 28px; left: 32px; width: 44px; height: 44px; color: var(--indigo-soft); }
+  .svc svg { display: none; }
+  .demo { position: absolute; top: 28px; left: 32px; right: 32px; height: 46%; border-radius: 14px; background: #100f2b; border: 1px solid var(--line); overflow: hidden; }
+  .demo * { position: absolute; box-sizing: border-box; }
+  .demo .chip { height: 22px; border-radius: 6px; background: #2b2960; font-size: 10px; font-weight: 600; color: #d4d6f0; padding: 4px 8px; white-space: nowrap; }
+  .demo .k { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--sc-ink-soft); }
+  /* CRM: a new lead moves from New to Assigned */
+  .d-crm .k1 { left: 12%; top: 12%; } .d-crm .k2 { left: 58%; top: 12%; }
+  .d-crm .col { top: 26%; bottom: 10%; width: 36%; border-radius: 10px; border: 1px dashed var(--line); } .d-crm .c1 { left: 8%; } .d-crm .c2 { left: 54%; }
+  .d-crm .lead { left: 11%; top: 34%; background: var(--indigo); animation: crm 4s ease-in-out infinite; }
+  .d-crm .old { left: 57%; top: 58%; }
+  @keyframes crm { 0%,20% { left: 11%; } 50%,85% { left: 57%; background: var(--violet); } 100% { left: 11%; } }
+  /* Documents: lines fill in, then an Approved stamp */
+  .d-doc .page { left: 50%; top: 10%; width: 42%; height: 80%; margin-left: -21%; background: #f8fafc; border-radius: 6px; }
+  .d-doc .ln { left: 12%; height: 5px; border-radius: 3px; background: #c7d2fe; transform-origin: left; animation: ln 4s ease-out infinite; }
+  .d-doc .ln:nth-child(1) { top: 14%; width: 60%; } .d-doc .ln:nth-child(2) { top: 26%; width: 76%; animation-delay: .25s; } .d-doc .ln:nth-child(3) { top: 38%; width: 68%; animation-delay: .5s; } .d-doc .ln:nth-child(4) { top: 50%; width: 50%; animation-delay: .75s; }
+  @keyframes ln { 0% { transform: scaleX(0); } 25%,100% { transform: scaleX(1); } }
+  .d-doc .stamp { right: 10%; bottom: 10%; font: 800 11px var(--sc-font-display); color: #16a34a; border: 2px solid #16a34a; border-radius: 4px; padding: 2px 6px; transform: rotate(-8deg) scale(0); animation: stamp 4s ease-out infinite; }
+  @keyframes stamp { 0%,40% { transform: rotate(-8deg) scale(0); opacity: 0; } 50%,90% { transform: rotate(-8deg) scale(1); opacity: 1; } 100% { opacity: 0; } }
+  /* Email: three messages go out on their own */
+  .d-mail .msg { left: 10%; right: 10%; height: 22%; border-radius: 8px; background: #2b2960; font-size: 10px; color: #d4d6f0; padding: 6px 10px; animation: msg 4.5s ease-in-out infinite; opacity: 0; }
+  .d-mail .msg:nth-child(1) { top: 10%; } .d-mail .msg:nth-child(2) { top: 39%; animation-delay: .6s; } .d-mail .msg:nth-child(3) { top: 68%; animation-delay: 1.2s; }
+  .d-mail .msg b { right: 8px; top: 6px; color: var(--sc-accent); font-weight: 700; }
+  @keyframes msg { 0% { opacity: 0; transform: translateY(8px); } 12%,80% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+  /* Sheets: rows light up as they sync */
+  .d-sheet .row { left: 8%; right: 8%; height: 14%; border-radius: 4px; background: repeating-linear-gradient(90deg, #2b2960 0 31%, transparent 31% 34%); animation: row 3.6s linear infinite; }
+  .d-sheet .row:nth-child(1) { top: 10%; } .d-sheet .row:nth-child(2) { top: 30%; animation-delay: .4s; } .d-sheet .row:nth-child(3) { top: 50%; animation-delay: .8s; } .d-sheet .row:nth-child(4) { top: 70%; animation-delay: 1.2s; }
+  @keyframes row { 0%,100% { filter: none; } 10%,25% { filter: brightness(1.9) hue-rotate(-12deg); } }
+  /* Connecting: a pulse travels between three tools */
+  .d-link .node { width: 34px; height: 34px; border-radius: 10px; background: #2b2960; border: 1px solid var(--line); }
+  .d-link .n1 { left: 8%; top: 50%; margin-top: -17px; } .d-link .n2 { left: 50%; top: 14%; margin-left: -17px; } .d-link .n3 { right: 8%; top: 50%; margin-top: -17px; } .d-link .n4 { left: 50%; bottom: 14%; margin-left: -17px; }
+  .d-link .hub { left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--sc-accent); box-shadow: 0 0 0 0 rgba(245,158,11,.5); animation: hub 2s ease-out infinite; }
+  .d-link .wire { left: calc(8% + 34px); right: calc(8% + 34px); top: 50%; height: 2px; background: var(--indigo); }
+  .d-link .wire.v { left: 50%; right: auto; top: calc(14% + 34px); bottom: calc(14% + 34px); width: 2px; height: auto; }
+  @keyframes hub { 70% { box-shadow: 0 0 0 16px rgba(245,158,11,0); } 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); } }
+  /* Reporting: bars grow to today's numbers */
+  .d-bars .bb { bottom: 12%; width: 12%; border-radius: 4px 4px 0 0; background: var(--indigo-hi); transform-origin: bottom; animation: bar 4s ease-out infinite; }
+  .d-bars .bb:nth-child(1) { left: 14%; height: 40%; } .d-bars .bb:nth-child(2) { left: 32%; height: 58%; animation-delay: .15s; } .d-bars .bb:nth-child(3) { left: 50%; height: 48%; animation-delay: .3s; } .d-bars .bb:nth-child(4) { left: 68%; height: 72%; animation-delay: .45s; background: var(--sc-accent); }
+  @keyframes bar { 0% { transform: scaleY(0); } 30%,85% { transform: scaleY(1); } 100% { transform: scaleY(0); } }
+  @media (prefers-reduced-motion: reduce) { .demo *, .demo *::before { animation: none !important; opacity: 1 !important; } }
   .svc h3 { font-family: var(--sc-font-display); font-size: 26px; line-height: 1.1; margin: 0 0 10px; }
   .svc p { color: var(--sc-ink-soft); margin: 0; }
   .svc--tools { background: transparent; border-style: dashed; justify-content: center; }
@@ -165,6 +216,7 @@
   .review .stars { color: var(--sc-accent); letter-spacing: 2px; margin-bottom: 14px; }
   .review blockquote { margin: 0; font-size: 18px; line-height: 1.55; flex: 1; }
   .review figcaption { margin-top: 20px; color: var(--sc-ink-soft); font-weight: 600; }
+  .offer-note { margin: 96px 0 24px; }
   .offer { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 96px 0 24px; padding: 14px 18px; border: 1px dashed var(--sc-accent); border-radius: 12px; }
   .offer b { background: var(--sc-accent); color: var(--sc-accent-ink); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
   .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -205,6 +257,12 @@
 <body>
 
 <span data-sc-progress></span>
+<div class="thread" aria-hidden="true">
+  <span class="thread__line"><span class="thread__fill"></span></span>
+  <span class="thread__dot" data-at="top" data-c="indigo"><em>Start</em></span>
+  <span class="thread__dot" data-at="work" data-c="violet"><em>Proof</em></span>
+  <span class="thread__dot" data-at="contact" data-c="amber"><em>Your next step</em></span>
+</div>
 
 <header class="bar">
   <a href="#top" class="brand"><svg viewBox="0 0 40 24" aria-hidden="true"><line x1="6" y1="14" x2="18" y2="7" stroke="#6366f1" stroke-width="2.5"/><line x1="18" y1="7" x2="31" y2="13" stroke="#6366f1" stroke-width="2.5"/><circle cx="6" cy="14" r="4.5" fill="#6366f1"/><circle cx="18" cy="7" r="4.5" fill="#8b5cf6"/><circle cx="32" cy="13" r="6" fill="#f59e0b"/></svg>NxtSteps</a>
@@ -212,7 +270,7 @@
     <a href="#custom">Custom builds</a>
     <a href="#work">Our work</a>
     <a href="#pricing">Pricing</a>
-    <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta calendar-link">Book a free audit</a>
+    <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta calendar-link">Book a free call</a>
   </nav>
 </header>
 
@@ -237,7 +295,7 @@
       <h1 class="sc-display sc-display--xl" data-sc-kinetic="lines" data-sc-cue="0 1 0">Your business, <span class="amber">running itself.</span></h1>
       <p class="sc-lede">We build automations and custom software that take the repetitive work off your team: billing, follow-ups, data entry, reporting. You get the hours back.</p>
       <div class="hero-ctas">
-        <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta cta--lg calendar-link">Book a free audit</a>
+        <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta cta--lg calendar-link">Book a free call</a>
         <a href="#work" class="ghost">See a real build</a>
       </div>
     </div>
@@ -337,12 +395,12 @@
           <h2 class="sc-display sc-display--md">What we automate.</h2>
           <p class="sc-body">If someone on your team copies data from one place to another, it can probably happen on its own.</p>
         </div>
-        <article class="svc" data-sc-tilt="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 11l2 2 4-4"/></svg><h3>CRM &amp; lead routing</h3><p>New leads scored, routed and followed up automatically. No missed opportunities.</p></article>
-        <article class="svc" data-sc-tilt="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h5"/></svg><h3>Documents &amp; approvals</h3><p>Proposals, contracts and reports generated from your data, with approval steps built in.</p></article>
-        <article class="svc" data-sc-tilt="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg><h3>Email &amp; notifications</h3><p>Follow-ups, alerts and status updates that go out on time without anyone remembering.</p></article>
-        <article class="svc" data-sc-tilt="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg><h3>Spreadsheets &amp; databases</h3><p>Live sync, formatting and dashboards, so the sheet updates itself.</p></article>
-        <article class="svc" data-sc-tilt="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="19" cy="19" r="3"/><path d="M8 11l8-5M8 13l8 5"/></svg><h3>Connecting your tools</h3><p>Two tools or twenty, talking to each other so your team works from one source of truth.</p></article>
-        <article class="svc" data-sc-tilt="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10M9 21V4M15 21v-8M21 21V7"/></svg><h3>Reporting &amp; data pipelines</h3><p>Numbers collected, cleaned and reported automatically, so decisions use today's data.</p></article>
+        <article class="svc" data-sc-tilt="5"><div class="demo d-crm" aria-hidden="true"><span class="k k1">New</span><span class="k k2">Assigned</span><span class="col c1"></span><span class="col c2"></span><span class="chip old">Dana R.</span><span class="chip lead">New lead: Sam K.</span></div><h3>CRM &amp; lead routing</h3><p>New leads scored, routed and followed up automatically. No missed opportunities.</p></article>
+        <article class="svc" data-sc-tilt="5"><div class="demo d-doc" aria-hidden="true"><div class="page"><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="stamp">APPROVED</span></div></div><h3>Documents &amp; approvals</h3><p>Proposals, contracts and reports generated from your data, with approval steps built in.</p></article>
+        <article class="svc" data-sc-tilt="5"><div class="demo d-mail" aria-hidden="true"><span class="msg">Invoice #1044 sent<b>&#10003;</b></span><span class="msg">Payment reminder<b>&#10003;</b></span><span class="msg">Welcome, new member<b>&#10003;</b></span></div><h3>Email &amp; notifications</h3><p>Follow-ups, alerts and status updates that go out on time without anyone remembering.</p></article>
+        <article class="svc" data-sc-tilt="5"><div class="demo d-sheet" aria-hidden="true"><span class="row"></span><span class="row"></span><span class="row"></span><span class="row"></span></div><h3>Spreadsheets &amp; databases</h3><p>Live sync, formatting and dashboards, so the sheet updates itself.</p></article>
+        <article class="svc" data-sc-tilt="5"><div class="demo d-link" aria-hidden="true"><span class="wire"></span><span class="wire v"></span><span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span><span class="hub"></span></div><h3>Connecting your tools</h3><p>Two tools or twenty, talking to each other so your team works from one source of truth.</p></article>
+        <article class="svc" data-sc-tilt="5"><div class="demo d-bars" aria-hidden="true"><span class="bb"></span><span class="bb"></span><span class="bb"></span><span class="bb"></span></div><h3>Reporting &amp; data pipelines</h3><p>Numbers collected, cleaned and reported automatically, so decisions use today's data.</p></article>
         <article class="svc svc--tools"><h3>Built with the right tool</h3><p>We pick what fits your business, not what we like.</p><div class="tools"><span>Zapier</span><span>n8n</span><span>Power Automate</span><span>Google Apps Script</span><span>Excel VBA</span><span>QuickBooks</span><span>Custom code</span></div></article>
       </div>
     </div>
@@ -357,11 +415,11 @@
         <figure class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><blockquote>&ldquo;NxtSteps helps us automate our ability to send targeted mailings to high-quality leads. What would have been a 20-minute process each time now takes us only two minutes.&rdquo;</blockquote><figcaption>Jay P.</figcaption></figure>
         <figure class="review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;It was a pleasure working with Jerry, he was responsive, attentive and took care of all we needed in a timely fashion.&rdquo;</blockquote><figcaption>Yehuda K.</figcaption></figure>
       </div>
-      <div class="offer"><b>Limited</b> First 5 workflow audits at 50% off: <s>$249</s> $124.50</div>
+      <p class="sc-body offer-note">Every project starts with a free 30-minute call. No pressure, no obligation.</p>
       <div class="plans" data-sc-in data-sc-stagger="90">
-        <div class="plan"><h3>Workflow Audit</h3><div class="price">$249</div><p class="per">One-time</p><ul><li>30-minute discovery call</li><li>Process analysis</li><li>Automation roadmap</li><li>Tool recommendations</li></ul><a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta calendar-link">Book a free audit</a></div>
-        <div class="plan plan--hot"><h3>Build &amp; Launch</h3><div class="price">$2,500+</div><p class="per">Per project</p><ul><li>Everything in the audit</li><li>Custom automation or app build</li><li>Testing &amp; refinement</li><li>Full documentation</li><li>30 days of support</li></ul><a href="#contact" class="cta">Start a project</a></div>
-        <div class="plan"><h3>Retainer</h3><div class="price">$499</div><p class="per">Per month</p><ul><li>Monthly workflow review</li><li>Performance tuning</li><li>New automation builds</li><li>Priority support</li></ul><a href="#contact" class="cta">Get started</a></div>
+        <div class="plan"><h3>Workflow Audit</h3><div class="price">$250</div><p class="per">One-time</p><ul><li>Starts after your free call</li><li>Process analysis</li><li>Automation roadmap</li><li>Tool recommendations</li></ul><a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta calendar-link">Book a free call</a></div>
+        <div class="plan plan--hot"><h3>Build &amp; Launch</h3><div class="price">$2,500+</div><p class="per">Per project</p><ul><li>Everything in the audit</li><li>Custom automation or app build</li><li>Testing &amp; refinement</li><li>Full documentation</li><li>30 days of support</li></ul><a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta calendar-link">Book a free call</a></div>
+        <div class="plan"><h3>Retainer</h3><div class="price">$499</div><p class="per">Per month</p><ul><li>Monthly workflow review</li><li>Performance tuning</li><li>New automation builds</li><li>Priority support</li></ul><a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="cta calendar-link">Book a free call</a></div>
       </div>
     </div>
   </section>
@@ -375,7 +433,7 @@
           <p class="sc-lede">A few lines about the work you'd like off your plate. We reply within 24 hours with ideas, not a sales pitch.</p>
           <div class="alt">
             <span>Prefer email? <a href="mailto:hello@nxtsteps.cloud">hello@nxtsteps.cloud</a></span>
-            <span>Or <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="calendar-link">book a free audit</a> directly.</span>
+            <span>Or <a href="https://calendar.app.google/prtM7DG62QurZsVPA" class="calendar-link">book a free call</a> directly.</span>
           </div>
         </div>
         <div class="form">
@@ -392,7 +450,8 @@
               <div class="field"><label for="service">I'm interested in *</label>
                 <select id="service" name="service" required>
                   <option value="">Select a service...</option>
-                  <option value="Free Workflow Audit">Free Workflow Audit ($249 value)</option>
+                  <option value="Free Intro Call">Free intro call</option>
+                  <option value="Workflow Audit">Workflow Audit ($250)</option>
                   <option value="Build and Launch Project">Build &amp; Launch Project</option>
                   <option value="Monthly Optimization Retainer">Monthly Optimization Retainer</option>
                   <option value="Custom Solution">Custom Solution / App Build</option>
@@ -516,7 +575,26 @@ ScrollCraft.mount(document.body);
     });
   }
 
-  (function loop() { drawDesk(); drawWeek(); requestAnimationFrame(loop); })();
+  // ---- Logo thread: dots sit where their sections are on the page; the line fills with reading progress.
+  var thread = document.querySelector('.thread'), tdots = Array.prototype.slice.call(thread.querySelectorAll('.thread__dot'));
+  var tTargets = tdots.map(function (d) { return document.getElementById(d.getAttribute('data-at')); });
+  function placeThread() {
+    var max = document.documentElement.scrollHeight - innerHeight;
+    tdots.forEach(function (d, i) { d.style.top = (Math.min(tTargets[i].offsetTop, max) / max * 100).toFixed(2) + '%'; });
+  }
+  placeThread(); window.addEventListener('resize', placeThread); window.addEventListener('load', placeThread);
+  var lastRead = -1;
+  function drawThread() {
+    var max = document.documentElement.scrollHeight - innerHeight, read = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
+    if (Math.abs(read - lastRead) < 0.0005) return;
+    lastRead = read;
+    thread.style.setProperty('--read', read.toFixed(4));
+    var here = -1;
+    tdots.forEach(function (d, i) { var on = read * 100 >= parseFloat(d.style.top) - 0.5; d.classList.toggle('is-on', on); if (on) here = i; });
+    tdots.forEach(function (d, i) { d.classList.toggle('is-here', i === here); });
+  }
+
+  (function loop() { drawDesk(); drawWeek(); drawThread(); requestAnimationFrame(loop); })();
 
   // ---- Live reviews (n8n keeps reviews-cache.json fresh). The static ones stay if it fails.
   function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }

@@ -1,0 +1,38 @@
+# NxtSteps
+
+> NxtSteps builds automations and custom software that take the repetitive work off small teams: billing, follow-ups, data entry, reporting. You get the hours back.
+
+## Services
+
+- CRM & lead routing: new leads scored, routed and followed up automatically.
+- Documents & approvals: proposals, contracts and reports generated from your data, with approval steps built in.
+- Email & notifications: follow-ups, alerts and status updates that go out on time without anyone remembering.
+- Spreadsheets & databases: live sync, formatting and dashboards, so the sheet updates itself.
+- Connecting your tools: forms, spreadsheets, accounting, and payment tools working as one source of truth.
+- Reporting & data pipelines: numbers collected, cleaned and reported automatically.
+
+## Tools used
+
+Zapier, n8n, Power Automate, Google Apps Script, Excel VBA, QuickBooks, custom code. The tool is picked to fit the business, not the other way around.
+
+## Process
+
+1. Audit: process analysis and automation roadmap.
+2. Blueprint: the plan, including any software purchase needed, flagged before committing.
+3. Build: typically live in 1-2 weeks, with testing, documentation, and 30 days of support.
+4. Monitor and optimize.
+
+## Offer
+
+- Free 30-minute discovery call first.
+- Workflow Audit: $250 one-time, after the free call.
+- Build & Launch: $2,500+ per project.
+- Retainer: $499 per month.
+
+Clients own their data. NxtSteps owns none. The goal is not to add to the client's tech stack, but a software purchase is sometimes still needed.
+
+## Contact
+
+- Book a free call: https://calendar.app.google/prtM7DG62QurZsVPA
+- Email: hello@nxtsteps.cloud
+- Website: https://nxtsteps.cloud/

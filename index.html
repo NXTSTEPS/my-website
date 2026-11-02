@@ -716,5 +716,13 @@ ScrollCraft.mount(document.body);
   });
 })();
 </script>
+<script>
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href*="calendar.app.google/prtM7DG62QurZsVPA"]');
+  if (a && typeof gtag === 'function') {
+    gtag('event', 'generate_lead');
+  }
+});
+</script>
 </body>
 </html>

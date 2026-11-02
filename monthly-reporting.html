@@ -11,8 +11,17 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stop Rebuilding Reports Every Month: Automated Monthly Reporting and Dashboards for Small Businesses</title>
-<meta name="description" content="Every month, someone logs into five tools, copies the numbers into a spreadsheet, and writes the summary again — and by delivery, the numbers are out of date. NxtSteps builds monthly reporting that fills itself from live data.">
+<title>Automated Monthly Reports for Small Business | NxtSteps</title>
+<meta name="description" content="Stop rebuilding your monthly report by hand. NxtSteps builds automated monthly reports and dashboards that fill themselves from live data.">
+<link rel="canonical" href="https://nxtsteps.cloud/monthly-reporting">
+<meta property="og:title" content="Automated Monthly Reports for Small Business | NxtSteps">
+<meta property="og:description" content="Stop rebuilding your monthly report by hand. NxtSteps builds automated monthly reports and dashboards that fill themselves from live data.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nxtsteps.cloud/monthly-reporting">
+<meta property="og:site_name" content="NxtSteps">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Automated Monthly Reports for Small Business | NxtSteps">
+<meta name="twitter:description" content="Stop rebuilding your monthly report by hand. NxtSteps builds automated monthly reports and dashboards that fill themselves from live data.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   body { background:#0e0d22; color:#f1f5f9; font-family:"Inter", system-ui, sans-serif; margin:0; line-height:1.65; }
@@ -25,13 +34,82 @@
   .cta { background:#4f46e5; color:#fff !important; display:inline-block; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:600; margin:12px 0; }
   footer { border-top:1px solid #2a2858; margin-top:48px; padding-top:24px; padding-bottom:48px; color:#a5a7c9; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "name": "NxtSteps",
+      "url": "https://nxtsteps.cloud/",
+      "email": "hello@nxtsteps.cloud",
+      "areaServed": "US",
+      "description": "Workflow automation for small businesses."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a new dashboard platform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. The point is to connect the data you already have and template the report you already send, not to buy a new platform first. If a dashboard tool is the right display layer, that comes out in the blueprint."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my data lives outside Google tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is common, and it is an audit question. Non-Google sources can usually be connected via API, webhook, or scheduled export \u2014 or, if a source cannot be connected reliably, that limitation is flagged before you commit, not after the first report is due."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle metrics that are defined differently by different people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By defining each metric once, in writing, with one source and one owner, before the report is built. That definition becomes part of the system, not a conversation that happens again every month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can reports be sent automatically each month?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once the connections and definitions are in place, a standard monthly report can fill itself and be delivered by email or shared link on schedule."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who writes the summary \u2014 a person or the tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A person, on top of real data. The system does the copying, refreshing, and flagging. The summary \u2014 what changed, why it matters, and what should happen next \u2014 is human judgement, and it should stay that way."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can this be live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically within 1\u20132 weeks for a report with a handful of sources and metrics, after the audit and blueprint. Reports with many sources, or metrics that need new definitions first, can take longer, and that timeline is set in the blueprint, not guessed up front."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header><a class="brand" href="/">NxtSteps</a> &nbsp;·&nbsp; <a href="/">Home</a></header>
 <main>
-<h1>Stop Rebuilding Reports Every Month</h1>
-<h2>Automated monthly reporting and dashboards for small businesses</h2>
-<p>Every month, someone logs into five different tools, copies the numbers into a spreadsheet, fixes the charts, and writes the summary again. By the time the report is sent, the numbers are already out of date — and next month, the whole thing starts over.</p>
+<h1>Automated Monthly Reports for Small Business</h1>
+<p class="subtitle">Automated monthly reporting and dashboards for small businesses</p>
+<p class="author"><img src="/assets/jerry.jpg" alt="Jerry Goldberg, NxtSteps" width="64" height="64" style="border-radius:50%;vertical-align:middle;"> By Jerry Goldberg, NxtSteps — Jerry works directly with clients, with no hand-offs.</p>
+<p>Automated monthly reports for small business should fill themselves from live data — instead of someone logging into five tools every month, copying the numbers into a spreadsheet, fixing the charts, and writing the summary again, only for the numbers to be out of date by delivery.</p>
 <p>This is for US small businesses where monthly reporting is a manual rebuild, not for teams that need an enterprise BI platform.</p>
 <h2>Where monthly reporting actually breaks down</h2>
 <ul>
@@ -50,17 +128,14 @@
 <p><strong>Deliver on schedule.</strong> Send the finished report by email or shared link, automatically, on the same day each month, instead of depending on someone remembering to send it.</p>
 <p><strong>Flag what changed.</strong> Highlight the numbers that moved, exceptions, and overdue items, instead of burying them in a long table that nobody reads to the end.</p>
 <h2>How NxtSteps builds it</h2>
-<p>NxtSteps works directly with clients — no hand-offs — and builds custom automations, not templates, using the tools a business already has.</p>
-<p><strong>1. Audit.</strong> Map your current workflows, list every metric in the current monthly report, and cross out any nobody looks at. The first step is often making the report smaller, not bigger.</p>
-<p><strong>2. Blueprint.</strong> A clear automation plan in plain English: which sources feed which metrics, what each metric means, what the report template looks like, and when it is delivered.</p>
-<p><strong>3. Build and launch.</strong> Custom-built automations, typically live within 1–2 weeks. No forced platform switch.</p>
-<p>The goal is not to add to your tech stack. Sometimes a software purchase is still needed to make the automation work, and that is not a promise that can always be avoided — it will be flagged in the blueprint before you commit, not added silently.</p>
-<p><strong>4. Monitor and optimize.</strong> Keep the automation running, fix broken connections before they corrupt a report, and extend it as the business grows.</p>
-<p>Tools in scope include Zapier, n8n, Power Automate, Google Apps Script, Excel VBA, and Google Sheets, connected to your existing CRM, accounting, analytics, and reporting tools.</p>
+<p><strong>1. Audit.</strong> List every metric in the current monthly report, where it comes from, and whether anyone actually uses it. The first step is often making the report smaller, not bigger.</p>
+<p><strong>2. Blueprint.</strong> A clear plan in plain English: which sources feed which metrics, what each metric means (one definition, one source, one owner), what the report template looks like, and when it is delivered each month.</p>
+<p><strong>3. Build and launch.</strong> Connections from CRM, accounting, analytics, and sheets into one reporting source, with a template that fills itself and delivers on schedule, typically live within 1–2 weeks. The goal is not to add to your tech stack. Sometimes a new tool is unavoidable; if so, it is in the blueprint before you commit.</p>
+<p><strong>4. Monitor and optimize.</strong> Watch for broken connections before they corrupt a report, flag numbers that moved or exceptions that need attention, and extend the report as the business grows.</p>
+<p><strong>Example workflow.</strong> On the 1st of the month, sales, payments, and lead numbers pull automatically from CRM, accounting, and sheets into one template, with changed numbers highlighted — instead of someone rebuilding the same report over several days.</p>
 <h2>Why this is different</h2>
-<p>Dashboard tools can display numbers, but someone still has to set them up, connect the sources, define the metrics, and keep them working.</p>
-<p>Looker Studio (formerly Data Studio) is Google&#x27;s free dashboard tool — drag-and-drop reports connected to GA4, Search Console, Sheets, and many other sources — but setup and connectors for non-Google platforms are manual work. Databox focuses on KPI tracking across business data, with live dashboards and recurring KPI sharing, and a free tier limited to a few sources and one dashboard. DashThis focuses on quick, visual, branded client reports from preset templates and widget bundles. AgencyAnalytics focuses on SEO and PPC agency reporting, with a client portal and rank tracking, priced per client.</p>
-<p>NxtSteps&#x27; position: a custom-built, end-to-end monthly reporting system — data collection, metric definitions, templates, scheduled delivery, and exception flags — across the tools a business already uses, not just a dashboard tool to configure yourself, and monitored after launch.</p>
+<p>Dashboard tools can display numbers, but someone still has to set them up, connect the sources, define the metrics, and keep them working. Free dashboard tools, KPI tracking tools, client reporting tools, and agency reporting tools each cover the display layer.</p>
+<p>NxtSteps builds the whole reporting system end to end: data collection, metric definitions, templates, scheduled delivery, and exception flags, across the tools a business already uses — and monitors it after launch.</p>
 <h2>Frequently asked questions</h2>
 <p><strong>Do I need a new dashboard platform?</strong></p>
 <p>Not necessarily. The point is to connect the data you already have and template the report you already send, not to buy a new platform first. If a dashboard tool is the right display layer, that comes out in the blueprint.</p>
@@ -73,16 +148,13 @@
 <p><strong>Who writes the summary — a person or the tool?</strong></p>
 <p>A person, on top of real data. The system does the copying, refreshing, and flagging. The summary — what changed, why it matters, and what should happen next — is human judgement, and it should stay that way.</p>
 <p><strong>How fast can this be live?</strong></p>
-<p>Typically within 1–2 weeks for a build, after the audit and blueprint. Complex, multi-system reporting can take longer, and that timeline is set in the blueprint, not guessed up front.</p>
+<p>Typically within 1–2 weeks for a report with a handful of sources and metrics, after the audit and blueprint. Reports with many sources, or metrics that need new definitions first, can take longer, and that timeline is set in the blueprint, not guessed up front.</p>
 <h2>Next step</h2>
 <p>If your monthly report is a rebuild, the first step is not a new dashboard. It is a list: every metric in the current report, where it comes from, and whether anyone actually uses it.</p>
-<p>Book a free 30-minute discovery call with NxtSteps. If you proceed, a full audit is $250.</p>
-<p>Contact: hello@nxtsteps.cloud — book a free 30-minute discovery call. A full audit is $250.</p>
-<p>---</p>
 <p><a class="cta" href="https://calendar.app.google/prtM7DG62QurZsVPA">Book a free 30-minute discovery call</a></p>
 <p>If you proceed, a full audit is $250. Contact: <a href="mailto:hello@nxtsteps.cloud">hello@nxtsteps.cloud</a></p>
 <hr>
-<p>Related: <a href="/manual-data-entry.html">Stop Re-Typing the Same Work</a> · <a href="/tools-dont-talk.html">When Your Tools Don't Talk to Each Other</a> · <a href="/monthly-reporting.html">Stop Rebuilding Reports Every Month</a></p>
+<p>Related: <a href="/manual-data-entry">Stop Re-Typing the Same Work</a> · <a href="/tools-dont-talk">When Your Tools Don't Talk to Each Other</a></p>
 </main>
 <footer><p>NxtSteps — Your business, running itself. Clients own their data. NxtSteps owns none.</p></footer>
 </body>

@@ -156,5 +156,13 @@
 <p>Related: <a href="/manual-data-entry">Stop Re-Typing the Same Work</a> · <a href="/tools-dont-talk">When Your Tools Don't Talk to Each Other</a></p>
 </main>
 <footer><p>NxtSteps — Your business, running itself. Clients own their data. NxtSteps owns none.</p></footer>
+<script>
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href*="calendar.app.google/prtM7DG62QurZsVPA"]');
+  if (a && typeof gtag === 'function') {
+    gtag('event', 'generate_lead');
+  }
+});
+</script>
 </body>
 </html>

@@ -11,8 +11,17 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stop Re-Typing the Same Work: Automated Data Entry Between Email, Spreadsheets, and Invoicing</title>
-<meta name="description" content="Small businesses lose hours re-typing the same client, amount, or order detail into email, spreadsheets, invoices, and QuickBooks. NxtSteps builds custom automations so data is entered once and flows everywhere, with validation before it posts.">
+<title>Automate Data Entry into QuickBooks | NxtSteps</title>
+<meta name="description" content="Stop re-typing client, amount, and order details into email, spreadsheets, and QuickBooks. NxtSteps automates data entry, with validation before it posts.">
+<link rel="canonical" href="https://nxtsteps.cloud/manual-data-entry">
+<meta property="og:title" content="Automate Data Entry into QuickBooks | NxtSteps">
+<meta property="og:description" content="Stop re-typing client, amount, and order details into email, spreadsheets, and QuickBooks. NxtSteps automates data entry, with validation before it posts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nxtsteps.cloud/manual-data-entry">
+<meta property="og:site_name" content="NxtSteps">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Automate Data Entry into QuickBooks | NxtSteps">
+<meta name="twitter:description" content="Stop re-typing client, amount, and order details into email, spreadsheets, and QuickBooks. NxtSteps automates data entry, with validation before it posts.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   body { background:#0e0d22; color:#f1f5f9; font-family:"Inter", system-ui, sans-serif; margin:0; line-height:1.65; }
@@ -25,13 +34,82 @@
   .cta { background:#4f46e5; color:#fff !important; display:inline-block; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:600; margin:12px 0; }
   footer { border-top:1px solid #2a2858; margin-top:48px; padding-top:24px; padding-bottom:48px; color:#a5a7c9; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "name": "NxtSteps",
+      "url": "https://nxtsteps.cloud/",
+      "email": "hello@nxtsteps.cloud",
+      "areaServed": "US",
+      "description": "Workflow automation for small businesses."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need to change my accounting software or spreadsheet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, in most cases. The point is to connect what you already use, not to replace it. If a tool genuinely cannot be connected, that comes out in the audit, before anything is built."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the automation gets a number wrong?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Validation comes first, especially for money data. Missing, duplicate, or mismatched records are flagged for human review before they post, and every move is logged so errors can be traced."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it handle PDFs and email attachments, or only clean spreadsheets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the source, and that is an audit question. Clean form and spreadsheet data is the easiest starting point. PDFs and email attachments can often be extracted and validated too, but layout changes and missing fields need a review step \u2014 which the system should include, not skip."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle duplicates and mismatches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By defining a single source of truth for each record, and a rule for what happens when two systems disagree: flag it, hold it, and let a human decide, rather than letting the last copy win silently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can this be live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically within 1\u20132 weeks for a single-system build (for example, spreadsheet to QuickBooks), after the audit and blueprint. Multi-system work \u2014 email, spreadsheets, invoicing, and accounting together \u2014 can take longer, and that timeline is set in the blueprint, not guessed up front."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What tools do you work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zapier, n8n, Power Automate, Google Apps Script, Excel VBA, and QuickBooks, connected to your existing spreadsheets, email, and accounting tools."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header><a class="brand" href="/">NxtSteps</a> &nbsp;·&nbsp; <a href="/">Home</a></header>
 <main>
-<h1>Stop Re-Typing the Same Work</h1>
-<h2>Automated data entry between email, spreadsheets, and invoicing for small businesses</h2>
-<p>The same client name gets typed into an email, then a spreadsheet, then an invoice, then QuickBooks. Every re-type is a chance for a typo, a missed row, or a month-end scramble — and every one of those re-types is work your team is already paying for, twice.</p>
+<h1>Automate Data Entry into QuickBooks, Spreadsheets, and Invoicing</h1>
+<p class="subtitle">Automated data entry between email, spreadsheets, and invoicing for small businesses</p>
+<p class="author"><img src="/assets/jerry.jpg" alt="Jerry Goldberg, NxtSteps" width="64" height="64" style="border-radius:50%;vertical-align:middle;"> By Jerry Goldberg, NxtSteps — Jerry works directly with clients, with no hand-offs.</p>
+<p>Automate data entry into QuickBooks, spreadsheets, and invoicing, so the same client name, amount, or order detail is entered once and flows everywhere — instead of being typed again into an email, then a spreadsheet, then an invoice, then QuickBooks.</p>
 <p>This is for US small businesses where repetitive copying between tools is eating staff time, not for teams looking for another enterprise platform to learn.</p>
 <h2>Where manual data entry actually leaks time and accuracy</h2>
 <p>It rarely looks like a big, obvious problem. It looks like a dozen small ones, every day:</p>
@@ -51,16 +129,14 @@
 <p><strong>Keep a trail.</strong> Show what moved, when, and where, so errors can be traced instead of hunted, and so a month-end question has an answer that does not depend on memory.</p>
 <p><strong>Rebuild reports from live data.</strong> Monthly summaries pull from the same connected source, not from a rebuilt spreadsheet, so the report is current the day it is sent.</p>
 <h2>How NxtSteps builds it</h2>
-<p>NxtSteps works directly with clients — no hand-offs — and builds custom automations, not templates, using the tools a business already has.</p>
-<p><strong>1. Audit.</strong> Map your current workflows and find where the same data is typed more than once, and where those re-types cause the most errors or delays.</p>
-<p><strong>2. Blueprint.</strong> A clear automation plan in plain English: what the single source of truth is for each piece of data, what gets validated, and what happens when something does not match.</p>
-<p><strong>3. Build and launch.</strong> Custom-built automations, typically live within 1–2 weeks. No forced platform switch.</p>
-<p>The goal is not to add to your tech stack. Sometimes a software purchase is still needed to make the automation work, and that is not a promise that can always be avoided — it will be flagged in the blueprint before you commit, not added silently. If your team lives in spreadsheets, email, and QuickBooks, the automation lives there too.</p>
-<p><strong>4. Monitor and optimize.</strong> Keep the automation running, fix breaks before they become customer complaints, and extend it as the business grows.</p>
-<p>Tools in scope include Zapier, n8n, Power Automate, Google Apps Script, Excel VBA, and QuickBooks, connected to your existing spreadsheets, email, and accounting tools.</p>
+<p><strong>1. Audit.</strong> Map where the same data is typed more than once — email to spreadsheet, spreadsheet to invoice, spreadsheet to QuickBooks — and where those re-types cause the most errors or delays.</p>
+<p><strong>2. Blueprint.</strong> A clear plan in plain English: what the single source of truth is for each field (client, date, amount, status), what gets validated before it posts, and what happens when two systems disagree.</p>
+<p><strong>3. Build and launch.</strong> Custom automations that capture data once and move it between email, spreadsheets, invoicing, and QuickBooks, typically live within 1–2 weeks. The goal is not to add to your tech stack. Sometimes a new tool is unavoidable; if so, it is in the blueprint before you commit.</p>
+<p><strong>4. Monitor and optimize.</strong> Watch for failed syncs, duplicate records, and mismatched amounts, and fix them before they become month-end problems.</p>
+<p><strong>Example workflow.</strong> A shul billing system built on a spreadsheet: dues and charges entered once create QuickBooks invoices, card payments are taken, and payments sync back to the spreadsheet on their own — no one re-types an invoice, a payment, or a balance.</p>
 <h2>Why this is different</h2>
-<p>Import and extraction tools each cover one slice. SaasAnt focuses on bulk and recurring imports into QuickBooks — bank statements, receipts, and spreadsheet files — rather than a whole cross-tool workflow. Tailride focuses on invoice collection and extraction from email inboxes and supplier portals, with QuickBooks and Xero export. Boon focuses on accounting and bookkeeping automation — re-keyed invoices, categorization, and reconciliation — and starts read-only before touching the books, with the client owning the system. Amalgam focuses on using a spreadsheet as the interface to business apps, eliminating exports and copy-paste between systems like QuickBooks, Stripe, and Shopify.</p>
-<p>NxtSteps&#x27; position: a custom-built, end-to-end workflow across email, spreadsheets, invoicing, and QuickBooks — not just one import tool or one invoice tool — with validation and monitoring after launch, using tools the business already has.</p>
+<p>Import tools cover one slice: bulk imports into accounting, invoice extraction from email, bookkeeping automation, or using a spreadsheet as an interface to other apps. Each one solves a single step.</p>
+<p>NxtSteps builds the whole workflow end to end: capture once, map fields once, move data automatically between email, spreadsheets, invoicing, and QuickBooks, validate before it posts, and monitor it after launch — using the tools the business already has.</p>
 <h2>Frequently asked questions</h2>
 <p><strong>Do I need to change my accounting software or spreadsheet?</strong></p>
 <p>No, in most cases. The point is to connect what you already use, not to replace it. If a tool genuinely cannot be connected, that comes out in the audit, before anything is built.</p>
@@ -71,18 +147,15 @@
 <p><strong>How do you handle duplicates and mismatches?</strong></p>
 <p>By defining a single source of truth for each record, and a rule for what happens when two systems disagree: flag it, hold it, and let a human decide, rather than letting the last copy win silently.</p>
 <p><strong>How fast can this be live?</strong></p>
-<p>Typically within 1–2 weeks for a build, after the audit and blueprint. Complex, multi-system work can take longer, and that timeline is set in the blueprint, not guessed up front.</p>
+<p>Typically within 1–2 weeks for a single-system build (for example, spreadsheet to QuickBooks), after the audit and blueprint. Multi-system work — email, spreadsheets, invoicing, and accounting together — can take longer, and that timeline is set in the blueprint, not guessed up front.</p>
 <p><strong>What tools do you work with?</strong></p>
 <p>Zapier, n8n, Power Automate, Google Apps Script, Excel VBA, and QuickBooks, connected to your existing spreadsheets, email, and accounting tools.</p>
 <h2>Next step</h2>
 <p>If your team is typing the same data twice, the first step is not a new platform. It is a map of where the re-typing is happening, and what it is costing in time and errors.</p>
-<p>Book a free 30-minute discovery call with NxtSteps. If you proceed, a full audit is $250.</p>
-<p>Contact: hello@nxtsteps.cloud — book a free 30-minute discovery call. A full audit is $250.</p>
-<p>---</p>
 <p><a class="cta" href="https://calendar.app.google/prtM7DG62QurZsVPA">Book a free 30-minute discovery call</a></p>
 <p>If you proceed, a full audit is $250. Contact: <a href="mailto:hello@nxtsteps.cloud">hello@nxtsteps.cloud</a></p>
 <hr>
-<p>Related: <a href="/manual-data-entry.html">Stop Re-Typing the Same Work</a> · <a href="/tools-dont-talk.html">When Your Tools Don't Talk to Each Other</a> · <a href="/monthly-reporting.html">Stop Rebuilding Reports Every Month</a></p>
+<p>Related: <a href="/tools-dont-talk">When Your Tools Don't Talk to Each Other</a> · <a href="/monthly-reporting">Stop Rebuilding Reports Every Month</a></p>
 </main>
 <footer><p>NxtSteps — Your business, running itself. Clients own their data. NxtSteps owns none.</p></footer>
 </body>

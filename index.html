@@ -704,7 +704,7 @@ ScrollCraft.mount(document.body);
     var data = Object.fromEntries(new FormData(form));
     delete data.website;
     try {
-      var res = await fetch('https://n8n.nxtsteps.cloud/webhook/lead-submission', {
+      var res = await fetch('https://n8n.nxtsteps.cloud/webhook/lead-submission-nocodb', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
       });
       if (!res.ok) throw new Error('Form submission failed');

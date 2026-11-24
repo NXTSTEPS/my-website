@@ -10,6 +10,7 @@
 - Spreadsheets & databases: live sync, formatting and dashboards, so the sheet updates itself.
 - Connecting your tools: forms, spreadsheets, accounting, and payment tools working as one source of truth.
 - Reporting & data pipelines: numbers collected, cleaned and reported automatically.
+- ABA payroll and billing into QuickBooks (ABA Back-Office Autopilot): each pay period's claims export becomes provider bills and payer invoices in each QuickBooks company, with checks before anything is created and a reconciliation at the end. https://nxtsteps.cloud/aba-payroll-billing-quickbooks
 
 ## Tools used
 
